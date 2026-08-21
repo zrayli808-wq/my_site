@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "albumId": 1,
+    "trackNumber": 1,
+    "title": "唤 (prod by.Siren)",
+    "duration": "02:54",
+    "fileUrl": "/songs/album1/a1s1.mp3"
+  },
+  {
+    "id": 2,
+    "albumId": 1,
+    "trackNumber": 2,
+    "title": "惘 (prod.by Rick1y)",
+    "duration": "02:44",
+    "fileUrl": "/songs/album1/a1s2.mp3"
+  },
+  {
+    "id": 3,
+    "albumId": 1,
+    "trackNumber": 3,
+    "title": "WHASSUP (prod.by Lv9)",
+    "duration": "03:14",
+    "fileUrl": "/songs/album1/a1s3.mp3"
+  },
+  {
+    "id": 4,
+    "albumId": 1,
+    "trackNumber": 4,
+    "title": "蒲公英 (prod.by 1AVENDER BEATZ)",
+    "duration": "03:07",
+    "fileUrl": "/songs/album1/a1s4.mp3"
+  },
+  {
+    "id": 5,
+    "albumId": 1,
+    "trackNumber": 5,
+    "title": "Love habits (PROD.BY MOONVIBE BEATZ)",
+    "duration": "03:19",
+    "fileUrl": "/songs/album1/a1s5.mp3"
+  },
+  {
+    "id": 6,
+    "albumId": 1,
+    "trackNumber": 6,
+    "title": "LOVE AND LOYALTY (prod.by YoungMarkin)",
+    "duration": "02:48",
+    "fileUrl": "/songs/album1/a1s6.mp3"
+  }
+]

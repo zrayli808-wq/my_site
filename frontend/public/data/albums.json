@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Love&Loyalty part.1",
+    "artist": "ZRay",
+    "coverImage": "/albums/album1.jpg",
+    "releaseDate": "2022-06-30",
+    "description": "zray十七岁的诚意之作，用说唱讲述对世界的思考与情绪。"
+  },
+  {
+    "id": 2,
+    "title": "冬念春（Winter Misses Spring）",
+    "artist": "Zray",
+    "coverImage": "/albums/album2.jpg",
+    "releaseDate": "2023-02-21",
+    "description": "谨以《冬念春》献给那时的人，希望我能诠释好那些故事。"
+  },
+  {
+    "id": 3,
+    "title": "夏望秋（Summer To Autumn）",
+    "artist": "ZRay",
+    "coverImage": "/albums/album3.jpg",
+    "releaseDate": "2023-08-08",
+    "description": "如果说《冬念春》是对曾经的回忆与反思，那么《夏望秋》则是对当下与未来的一次总结与计划。"
+  },
+  {
+    "id": 4,
+    "title": "弱冠之年",
+    "artist": "ZRay",
+    "coverImage": "/albums/album4.jpg",
+    "releaseDate": "2024-08-08",
+    "description": "回顾此前的《冬念春》《夏望秋》《爱与诚》，它们或多或少带着些许犹疑与挣扎；而这一次，《弱冠之年》会少一些踟蹰，多一些能量、喜悦与希望。我希望这些声音中的信息可以传递给我..."
+  }
+]

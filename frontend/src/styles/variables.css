@@ -1,0 +1,19 @@
+/* frontend/src/styles/variables.css */
+:root {
+  --zray-gold: #333333;
+  --zray-gold-light: #666666;
+  --zray-bg-dark: #ffffff;
+  --zray-bg-card: rgba(0, 0, 0, 0.35);
+  --zray-text-white:#1a1a1a;
+  --zray-text-muted: #888888;
+  --zray-border-light: rgba(255, 255, 255, 0.06);
+  --zray-shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.15);
+  --zray-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
+  --zray-blur-md: blur(12px);
+  --zray-radius-sm: 8px;
+  --zray-radius-md: 12px;
+  --zray-radius-lg: 16px;
+  --zray-nav-height: 84px;
+  --zray-player-height: 80px;
+  --zray-transition-smooth: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

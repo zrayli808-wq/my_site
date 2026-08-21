@@ -1,0 +1,226 @@
+/* ===== 与导航栏统一风格 ===== */
+.player-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 999;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.player-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 0 0 220px;
+}
+.cover-mini {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.song-info .title {
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+  color: #fff;
+}
+.song-info .artist {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.player-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  justify-content: center;
+  max-width: 600px;
+}
+.ctrl-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+.ctrl-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.ctrl-btn:active {
+  transform: scale(0.92);
+}
+.play-btn {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #f7971e, #ffb347);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(247, 151, 30, 0.3);
+}
+.play-btn:hover {
+  background: linear-gradient(135deg, #ffa82e, #ffc15e);
+  color: #fff;
+  transform: scale(1.04);
+}
+.play-btn:active {
+  transform: scale(0.96);
+}
+.ctrl-btn svg {
+  display: block;
+}
+.time {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  min-width: 36px;
+  font-variant-numeric: tabular-nums;
+}
+.progress-bar {
+  flex: 1;
+  min-width: 80px;
+  height: 4px;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  outline: none;
+  transition: background 0.2s;
+}
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f7971e;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(247, 151, 30, 0.4);
+  transition: transform 0.15s;
+}
+.progress-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.progress-bar::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f7971e;
+  cursor: pointer;
+  border: none;
+}
+
+.player-right {
+  flex: 0 0 120px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.playlist-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-right: 8px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.playlist-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.volume-bar {
+  width: 80px;
+  height: 4px;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  outline: none;
+}
+.volume-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+.volume-bar::-webkit-slider-thumb:hover {
+  background: #fff;
+}
+.volume-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  border: none;
+}
+
+@media (max-width: 700px) {
+  .player-bar {
+    padding: 0 12px;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 70px;
+    gap: 8px;
+  }
+  .player-left {
+    flex: 0 0 auto;
+  }
+  .player-center {
+    order: 3;
+    flex: 1 1 100%;
+    gap: 8px;
+  }
+  .player-right {
+    flex: 0 0 auto;
+  }
+  .cover-mini {
+    width: 40px;
+    height: 40px;
+  }
+  .song-info .title {
+    font-size: 13px;
+    max-width: 100px;
+  }
+  .play-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .ctrl-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  .player-right {
+    flex: 0 0 80px;
+  }
+  .volume-bar {
+    width: 50px;
+  }
+}
