@@ -1,0 +1,110 @@
+/* Album 02 only. Shared navigation and player return to their original styles
+   automatically when this page is no longer mounted. */
+.winter-page {
+  --winter-ink: #f2f2ef;
+  --winter-muted: rgba(255,255,255,.48);
+  --winter-accent: #c7d0da;
+  color: var(--winter-ink);
+  background: #14191e;
+  font-family: 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+}
+.winter-page #wrap-texture { filter: blur(3px) saturate(.35) contrast(.72); opacity: .5; }
+.winter-page .mask-layer { background: linear-gradient(115deg, rgba(12,17,23,.72), rgba(16,23,30,.35) 60%, rgba(12,17,23,.64)); }
+.winter-page .detail-container { max-width: 1080px; padding: 148px 48px 120px; color: var(--winter-ink); }
+.winter-page .album-header { align-items: center; gap: clamp(40px,7vw,104px); margin-bottom: 80px; }
+.winter-page .album-cover { display: block; width: 280px; height: 280px; border-radius: 2px; box-shadow: none; }
+.winter-page .album-title-wrapper { align-items: flex-start; padding: 0; }
+.winter-page .title-group { gap: 0; align-items: flex-start; text-align: left; }
+.winter-page .winter-eyebrow { margin: 0 0 30px; font-size: 10px; letter-spacing: .2em; color: var(--winter-muted); }
+.winter-page .winter-title { font-size: clamp(44px,5.5vw,72px); font-weight: 400; line-height: 1.12; letter-spacing: .14em; color: var(--winter-ink); }
+.winter-page .winter-subtitle { margin: 18px 0 26px; font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: clamp(19px,2.2vw,28px); letter-spacing: .025em; line-height: 1.3; color: rgba(255,255,255,.65); }
+.winter-page .winter-meta { display: flex; gap: 12px; margin: 0; font-size: 12px; letter-spacing: .08em; color: var(--winter-muted); }
+.winter-page .back-btn { padding: 6px 0; font-size: 12px; border-radius: 0; color: var(--winter-muted); transition: color 200ms, transform 200ms; }
+.winter-page .back-btn:hover { background: transparent; color: var(--winter-ink); transform: translateX(-2px); }
+.winter-page .tab-bar { gap: 32px; margin-bottom: 22px; border-color: rgba(199,208,218,.14); }
+.winter-page .tab-btn { padding: 14px 0; border-bottom-width: 1px; font-size: 13px; font-weight: 400; letter-spacing: .1em; color: var(--winter-muted); transition: color 200ms, border-color 200ms; }
+.winter-page .tab-btn.active { color: var(--winter-ink); border-bottom-color: var(--winter-accent); }
+.winter-page .tab-btn:hover { color: var(--winter-ink); }
+.winter-page .song-list, .winter-page .album-detail { background: transparent; border-radius: 0; padding: 0; backdrop-filter: none; box-shadow: none; }
+.winter-page .winter-list-caption { display: flex; justify-content: space-between; margin: 0; padding: 4px 0 18px; color: rgba(255,255,255,.35); font-size: 9px; letter-spacing: .18em; }
+.winter-page .winter-track { position: relative; width: 100%; display: grid; grid-template-columns: 56px minmax(0,1fr) 24px 56px; align-items: center; gap: 12px; min-height: 66px; padding: 0 12px 0 0; border: 0; border-bottom: 1px solid rgba(199,208,218,.09); border-radius: 0; background: transparent; color: rgba(242,242,239,.73); font: inherit; cursor: pointer; text-align: left; transition: background-color 200ms, color 200ms; }
+.winter-page .winter-number { padding-left: 12px; font-size: 11px; font-variant-numeric: tabular-nums; letter-spacing: .04em; color: rgba(255,255,255,.35); transition: color 200ms; }
+.winter-page .winter-song-name { font-size: 17px; letter-spacing: .06em; transition: transform 200ms; }
+.winter-page .winter-duration { text-align: right; font-size: 11px; letter-spacing: .04em; font-variant-numeric: tabular-nums; color: var(--winter-muted); }
+.winter-page .winter-play-icon { opacity: 0; color: var(--winter-accent); transition: opacity 200ms; }
+.winter-page .winter-track:hover, .winter-page .winter-track:focus-visible { color: var(--winter-ink); background: rgba(199,208,218,.035); }
+.winter-page .winter-track:hover .winter-song-name { transform: translateX(3px); }
+.winter-page .winter-track:hover .winter-play-icon, .winter-page .winter-track:focus-visible .winter-play-icon { opacity: .85; }
+.winter-page .winter-track.is-current { color: var(--winter-ink); background: rgba(199,208,218,.055); }
+.winter-page .winter-track.is-current::before { content: ''; position: absolute; left: 0; top: 27px; width: 1px; height: 12px; background: var(--winter-accent); }
+.winter-page .winter-track.is-current .winter-number { color: var(--winter-accent); }
+.winter-page .winter-colophon { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin: 30px 0 0; font-size: 11px; letter-spacing: .12em; color: rgba(255,255,255,.35); }
+.winter-page .winter-colophon span { font-size: 9px; letter-spacing: .16em; }
+.winter-page .album-detail { max-width: 680px; padding: 20px 0 0; }
+.winter-page .detail-title { font-size: 13px; font-weight: 400; letter-spacing: .14em; color: var(--winter-accent); }
+.winter-page .intro-text { font-size: 14px; line-height: 2.2; color: rgba(255,255,255,.62); margin-bottom: 24px; }
+.winter-page button:focus-visible, #app:has(> .winter-page) :is(button,input,select,a):focus-visible { outline: 1px solid #c7d0da; outline-offset: 4px; }
+
+/* Shared chrome is restyled only in the presence of the album-02 marker. */
+#app:has(> .winter-page) .navbar { height: 58px; padding: 0 40px; border-bottom: 1px solid rgba(199,208,218,.07); }
+#app:has(> .winter-page) .brand { margin-left: 0; }
+#app:has(> .winter-page) .brand-logo { height: 34px; opacity: .75; filter: brightness(0) invert(1); transition: opacity 200ms; }
+#app:has(> .winter-page) .nav-links { gap: 28px; }
+#app:has(> .winter-page) .nav-links a { color: rgba(242,242,239,.56); font-family: Arial, 'Microsoft YaHei', sans-serif; font-size: 11px; letter-spacing: .12em; transition: color 200ms; }
+#app:has(> .winter-page) .nav-links a:hover { color: #f2f2ef; }
+#app:has(> .winter-page) .language-selector select { color: rgba(242,242,239,.5); font-size: 11px; }
+#app:has(> .winter-page) .language-selector option { background: #181e24; color: #f2f2ef; }
+#app:has(> .winter-page) .player-bar { height: 62px; background: rgba(18,23,29,.84); box-shadow: none; border-top-color: rgba(199,208,218,.12); padding: 0 32px; color: #f2f2ef; backdrop-filter: blur(16px); }
+#app:has(> .winter-page) .player-left { flex-basis: 200px; gap: 10px; min-width: 0; }
+#app:has(> .winter-page) .cover-mini { width: 34px; height: 34px; border-radius: 1px; box-shadow: none; }
+#app:has(> .winter-page) .song-info .title { color: #f2f2ef; font-size: 12px; font-weight: 400; }
+#app:has(> .winter-page) .song-info .artist { font-size: 10px; color: rgba(255,255,255,.4); }
+#app:has(> .winter-page) .player-center { gap: 8px; }
+#app:has(> .winter-page) .ctrl-btn, #app:has(> .winter-page) .playlist-btn { color: #c7d0da; border-radius: 2px; transition: opacity 200ms, color 200ms, background-color 200ms; }
+#app:has(> .winter-page) .ctrl-btn { min-width: 32px; min-height: 32px; }
+#app:has(> .winter-page) .play-btn { width: 32px; height: 32px; background: transparent; box-shadow: none; color: #f2f2ef; }
+#app:has(> .winter-page) .ctrl-btn:hover { background: rgba(199,208,218,.06); }
+#app:has(> .winter-page) .ctrl-btn:active, #app:has(> .winter-page) .play-btn:hover { transform: none; }
+#app:has(> .winter-page) .ctrl-btn svg { width: 18px; height: 18px; }
+#app:has(> .winter-page) .time { font-size: 10px; min-width: 28px; }
+#app:has(> .winter-page) :is(.progress-bar,.volume-bar) { height: 2px; background: rgba(199,208,218,.22); accent-color: #c7d0da; }
+#app:has(> .winter-page) input[type=range]::-webkit-slider-thumb { width: 8px; height: 8px; background: #c7d0da; box-shadow: none; transform: none; transition: opacity 200ms; }
+#app:has(> .winter-page) input[type=range]::-moz-range-thumb { width: 8px; height: 8px; background: #c7d0da; box-shadow: none; }
+#app:has(> .winter-page) .playlist-panel { background: rgba(18,23,29,.95); box-shadow: none; animation: winter-panel-in 200ms ease; }
+#app:has(> .winter-page) .playlist-item.active { background: rgba(199,208,218,.07); }
+#app:has(> .winter-page) .playlist-item.active .song-title { color: #f2f2ef; }
+#app:has(> .winter-page) .remove-btn:hover { color: #c7d0da; transform: none; }
+@keyframes winter-panel-in { from { opacity: 0; transform: translateX(3px); } to { opacity: 1; transform: translateX(0); } }
+@media (hover: none) { .winter-page .winter-play-icon { opacity: .45; } }
+@media (max-width: 800px) {
+  .winter-page .detail-container { padding: 110px 28px 130px; }
+  .winter-page .album-header { gap: 32px; margin-bottom: 48px; }
+  .winter-page .album-cover { width: 210px; height: 210px; }
+  .winter-page .album-title-wrapper { flex-direction: column; gap: 24px; }
+  .winter-page .winter-eyebrow { font-size: 8px; margin-bottom: 22px; }
+}
+@media (max-width: 700px) {
+  .winter-page .album-header { flex-direction: row; align-items: center; text-align: left; }
+  #app:has(> .winter-page) .player-bar { height: auto; min-height: 92px; padding: 8px 16px; gap: 4px; }
+  #app:has(> .winter-page) .player-left { flex: 1; }
+  #app:has(> .winter-page) .player-right { flex: 0 0 108px; }
+  #app:has(> .winter-page) .player-center { max-width: none; }
+  #app:has(> .winter-page) .navbar { padding: 0 20px; }
+}
+@media (max-width: 520px) {
+  .winter-page .detail-container { padding: 96px 24px 132px; }
+  .winter-page .album-header { flex-direction: column; align-items: flex-start; gap: 32px; margin-bottom: 36px; }
+  .winter-page .album-cover { width: min(64vw,260px); height: min(64vw,260px); }
+  .winter-page .album-title-wrapper { width: 100%; flex-direction: row; align-items: flex-start; gap: 12px; }
+  .winter-page .winter-title { font-size: 48px; }
+  .winter-page .winter-subtitle { font-size: 22px; margin: 14px 0 18px; }
+  .winter-page .winter-eyebrow { margin-bottom: 18px; }
+  .winter-page .winter-track { min-height: 62px; grid-template-columns: 34px minmax(0,1fr) 16px 42px; gap: 8px; padding-right: 0; }
+  .winter-page .winter-number { padding-left: 8px; }
+  .winter-page .winter-song-name { font-size: 16px; }
+  #app:has(> .winter-page) .nav-links { gap: 16px; margin-right: 16px; }
+  #app:has(> .winter-page) .brand-logo { height: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .winter-page *, #app:has(> .winter-page) :is(.navbar,.player-bar,.playlist-sidebar) * { animation: none !important; transition: none !important; }
+}
