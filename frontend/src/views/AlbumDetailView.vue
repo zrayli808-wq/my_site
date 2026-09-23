@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div class="page-wrapper" :class="{ 'winter-page': album?.id === 2 }">
     <!-- ===== 冬念春：雨特效背景 ===== -->
     <RainEffect 
       v-if="album?.id === 2"
@@ -36,8 +36,14 @@
         </div>
         <div class="album-title-wrapper">
           <div class="title-group">
-            <h1 class="album-title">{{ album?.title || '加载中...' }}</h1>
-            <div class="album-meta">
+            <template v-if="album?.id === 2">
+              <p class="winter-eyebrow">ZRAY / SELECTED WORKS / 2023</p>
+              <h1 class="album-title winter-title">冬念春</h1>
+              <p class="winter-subtitle" lang="en">Winter Misses Spring</p>
+              <p class="winter-meta">ZRay <span aria-hidden="true">·</span> <time datetime="2023-02-21">2023.02.21</time></p>
+            </template>
+            <h1 v-else class="album-title">{{ album?.title || '加载中...' }}</h1>
+            <div v-if="album?.id !== 2" class="album-meta">
               <span class="meta-item">{{ album?.artist || '未知艺术家' }}</span>
               <span class="meta-divider">·</span>
               <span class="meta-item">{{ album?.releaseDate ? formatDate(album.releaseDate) : '未知日期' }}</span>
@@ -69,6 +75,25 @@
           <div v-if="loading" class="status">加载歌曲中...</div>
           <div v-else-if="error" class="status error">{{ error }}</div>
           <div v-else-if="songs.length === 0" class="empty-tip">暂无歌曲，请先添加数据</div>
+          <div v-else-if="album?.id === 2" class="winter-tracks">
+            <p class="winter-list-caption"><span>TRACKLIST</span><span>08 TRACKS</span></p>
+            <button
+              v-for="(song, index) in songs"
+              :key="song.id"
+              type="button"
+              class="winter-track"
+              :class="{ 'is-current': playerStore.currentSong?.id === song.id && playerStore.currentAlbum?.id === 2 }"
+              :aria-label="`播放 ${song.title}`"
+              :aria-current="playerStore.currentSong?.id === song.id && playerStore.currentAlbum?.id === 2 ? 'true' : undefined"
+              @click="playSong(song)"
+            >
+              <span class="winter-number">{{ String(index + 1).padStart(2, '0') }}</span>
+              <span class="winter-song-name">{{ song.title }}</span>
+              <svg class="winter-play-icon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+              <span class="winter-duration">{{ song.duration || '--:--' }}</span>
+            </button>
+            <p class="winter-colophon">冬日里的回望，写给春天。<span>WINTER MISSES SPRING — ZRAY</span></p>
+          </div>
           <div
             v-else
             v-for="(song, index) in songs"
@@ -311,3 +336,5 @@ onMounted(() => {
   color: #fff;
 }
 </style>
+<!-- These overrides only match while the Winter album page is mounted. -->
+<style src="../styles/views/winter-editorial.css"></style>
