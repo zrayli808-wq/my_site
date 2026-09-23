@@ -18,6 +18,10 @@ import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { Curtains, Plane } from 'curtainsjs'
 
 const props = defineProps({
+  watchScroll: {
+    type: Boolean,
+    default: true
+  },
   bgImage: {
     type: String,
     default: '/albums/default.jpg'
@@ -176,6 +180,7 @@ const initWebGL = () => {
     curtains.onRender(() => {})
     
     const params = {
+      watchScroll: props.watchScroll,
       vertexShader: shader.vertex,
       fragmentShader: shader.fragment,
       widthSegments: props.widthSegments,

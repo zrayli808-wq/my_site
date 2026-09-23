@@ -4,6 +4,7 @@
     <RainEffect 
       v-if="album?.id === 2"
       ref="rainEffectRef"
+      :watch-scroll="false"
       :bg-image="album?.coverImage || '/albums/default.jpg'" 
     />
 
