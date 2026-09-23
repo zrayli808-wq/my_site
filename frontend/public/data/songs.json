@@ -46,5 +46,69 @@
     "title": "LOVE AND LOYALTY (prod.by YoungMarkin)",
     "duration": "02:48",
     "fileUrl": "/songs/album1/a1s6.mp3"
+  },
+  {
+    "id": 7,
+    "albumId": 2,
+    "trackNumber": 1,
+    "title": "路过春天",
+    "duration": "02:51",
+    "fileUrl": "/songs/album2/a2s1.mp3"
+  },
+  {
+    "id": 8,
+    "albumId": 2,
+    "trackNumber": 2,
+    "title": "春分",
+    "duration": "03:12",
+    "fileUrl": "/songs/album2/a2s2.mp3"
+  },
+  {
+    "id": 9,
+    "albumId": 2,
+    "trackNumber": 3,
+    "title": "念",
+    "duration": "03:26",
+    "fileUrl": "/songs/album2/a2s3.mp3"
+  },
+  {
+    "id": 10,
+    "albumId": 2,
+    "trackNumber": 4,
+    "title": "信",
+    "duration": "03:19",
+    "fileUrl": "/songs/album2/a2s4.mp3"
+  },
+  {
+    "id": 11,
+    "albumId": 2,
+    "trackNumber": 5,
+    "title": "水",
+    "duration": "03:07",
+    "fileUrl": "/songs/album2/a2s5.mp3"
+  },
+  {
+    "id": 12,
+    "albumId": 2,
+    "trackNumber": 6,
+    "title": "寻",
+    "duration": "03:07",
+    "fileUrl": "/songs/album2/a2s6.mp3"
+  },
+  {
+    "id": 13,
+    "albumId": 2,
+    "trackNumber": 7,
+    "title": "别",
+    "duration": "02:51",
+    "fileUrl": "/songs/album2/a2s7.mp3"
+  },
+  {
+    "id": 14,
+    "albumId": 2,
+    "trackNumber": 8,
+    "title": "念II",
+    "duration": "03:18",
+    "fileUrl": "/songs/album2/a2s8.mp3"
   }
 ]
