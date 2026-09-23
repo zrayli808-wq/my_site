@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper" :class="{ 'winter-page': album?.id === 2 }">
+  <div class="page-wrapper" :class="{ 'winter-page': album?.id === 2, 'love-page': album?.id === 1 }">
     <!-- ===== 冬念春：雨特效背景 ===== -->
     <RainEffect 
       v-if="album?.id === 2"
@@ -43,6 +43,11 @@
               <p class="winter-subtitle" lang="en">Winter Misses Spring</p>
               <p class="winter-meta">ZRay <span aria-hidden="true">·</span> <time datetime="2023-02-21">2023.02.21</time></p>
             </template>
+            <template v-else-if="album?.id === 1">
+              <p class="love-eyebrow">ZRAY / PERSONAL ARCHIVE / 2022</p>
+              <h1 class="album-title love-title" lang="en">Love &amp; Loyalty<span>part.1</span></h1>
+              <p class="love-note">惟愿爱与忠诚可以遍布大地</p>
+            </template>
             <h1 v-else class="album-title">{{ album?.title || '加载中...' }}</h1>
             <div v-if="album?.id !== 2" class="album-meta">
               <span class="meta-item">{{ album?.artist || '未知艺术家' }}</span>
@@ -76,6 +81,22 @@
           <div v-if="loading" class="status">加载歌曲中...</div>
           <div v-else-if="error" class="status error">{{ error }}</div>
           <div v-else-if="songs.length === 0" class="empty-tip">暂无歌曲，请先添加数据</div>
+          <div v-else-if="album?.id === 1" class="love-tracks">
+            <p class="love-list-caption"><span>CONTENTS / 曲目</span><span>{{ String(songs.length).padStart(2, '0') }} TRACKS</span></p>
+            <div v-for="(song, index) in songs" :key="song.id" class="love-track"
+              :class="{ 'is-current': playerStore.currentSong?.id === song.id && playerStore.currentAlbum?.id === 1 }">
+              <button type="button" class="love-track-main" :aria-label="`播放 ${song.title}`"
+                :aria-current="playerStore.currentSong?.id === song.id && playerStore.currentAlbum?.id === 1 ? 'true' : undefined"
+                @click="playSong(song)">
+                <span class="love-number">{{ String(index + 1).padStart(2, '0') }}</span>
+                <span class="love-song-name">{{ song.title }}</span>
+                <svg class="love-play-icon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                <span class="love-duration">{{ song.duration || '--:--' }}</span>
+              </button>
+              <button type="button" class="love-next" :aria-label="`下一首播放 ${song.title}`" title="下一首播放" @click="playNext(song)">＋</button>
+            </div>
+            <p class="love-colophon"><span>以情感温暖世界。</span><span>LOVE &amp; LOYALTY — ZRAY</span></p>
+          </div>
           <div v-else-if="album?.id === 2" class="winter-tracks">
             <p class="winter-list-caption"><span>TRACKLIST</span><span>08 TRACKS</span></p>
             <button
@@ -339,3 +360,5 @@ onMounted(() => {
 </style>
 <!-- These overrides only match while the Winter album page is mounted. -->
 <style src="../styles/views/winter-editorial.css"></style>
+
+<style src="../styles/views/love-loyalty.css"></style>

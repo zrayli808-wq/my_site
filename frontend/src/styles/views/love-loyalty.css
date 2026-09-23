@@ -1,0 +1,92 @@
+/* Isolated visual system for album 01. */
+.love-page { --ink:#181511; --muted:rgba(24,21,17,.55); --red:#a9514c; background:#ddd4bf; color:var(--ink); font-family:Arial,'Microsoft YaHei',sans-serif; }
+html:has(.love-page),body:has(.love-page) { background:#ddd4bf; }
+#app:has(> .love-page) { background:transparent; padding-bottom:0; }
+.love-page .bg-fallback { opacity:.10; filter:saturate(.65); background-color:#ddd4bf; }
+.love-page .detail-container { max-width:1240px; padding:152px 40px 132px; color:var(--ink); }
+.love-page .album-header { display:grid; grid-template-columns:340px minmax(0,1fr) auto; align-items:end; gap:56px; margin-bottom:72px; }
+.love-page .album-cover-wrapper { position:relative; }
+.love-page .album-cover-wrapper::before { content:''; position:absolute; z-index:1; width:96px; height:22px; top:-10px; left:35%; transform:rotate(-7deg); background:rgba(230,212,175,.62); pointer-events:none; }
+.love-page .album-cover { width:340px; height:340px; border:7px solid #f3ecdd; border-bottom-width:18px; border-radius:1px; box-shadow:0 5px 14px #3728191f; }
+.love-page .album-title-wrapper { display:contents; }
+.love-page .title-group { min-width:0; gap:0; align-items:flex-start; text-align:left; }
+.love-page .love-eyebrow { margin:0 0 28px; font-size:10px; letter-spacing:.2em; color:var(--muted); }
+.love-page .love-title { font-family:Georgia,serif; font-size:clamp(34px,4.1vw,56px); font-weight:400; line-height:1.12; letter-spacing:-.045em; color:var(--ink); }
+.love-page .love-title span { display:block; width:fit-content; margin-top:8px; padding:0 10px 4px 0; font-size:.66em; font-style:italic; color:var(--red); border-bottom:2px solid #c9857d; transform:rotate(-3deg); }
+.love-page .love-note { margin:26px 0 22px; font-family:KaiTi,STKaiti,serif; font-size:17px; color:var(--red); }
+.love-page .album-meta { gap:10px; font-size:13px; letter-spacing:.05em; }
+.love-page :is(.meta-item,.meta-divider) { color:var(--muted); }
+.love-page .back-btn { align-self:end; padding:0; line-height:26px; color:var(--muted); }
+.love-page .back-btn:hover { background:transparent; color:var(--red); }
+.love-page .tab-bar { gap:32px; margin-bottom:22px; border-color:#1815111f; }
+.love-page .tab-btn { padding:14px 0; border-bottom-width:1px; font-size:13px; font-weight:400; letter-spacing:.1em; color:var(--muted); }
+.love-page .tab-btn.active { color:var(--ink); border-color:var(--red); }
+.love-page .tab-btn:hover { color:var(--red); }
+.love-page :is(.song-list,.album-detail) { background:transparent; border-radius:0; padding:0; backdrop-filter:none; box-shadow:none; }
+.love-page .love-list-caption { display:flex; justify-content:space-between; padding:4px 0 18px; color:var(--muted); font-size:10px; letter-spacing:.18em; }
+.love-page .love-track { display:flex; align-items:stretch; border-bottom:1px solid #1815111f; transition:background-color 200ms; }
+.love-page .love-track-main { display:grid; grid-template-columns:56px minmax(0,1fr) 24px 56px; align-items:center; gap:12px; flex:1; min-width:0; min-height:66px; padding:0; border:0; background:transparent; color:var(--ink); font:inherit; cursor:pointer; text-align:left; }
+.love-page .love-number { padding-left:12px; color:var(--muted); font-size:11px; font-variant-numeric:tabular-nums; }
+.love-page .love-song-name { font-size:17px; line-height:1.5; overflow-wrap:anywhere; padding-block:14px; }
+.love-page .love-duration { text-align:right; color:var(--muted); font-size:11px; font-variant-numeric:tabular-nums; }
+.love-page .love-play-icon { opacity:0; color:var(--red); transition:opacity 200ms; }
+.love-page .love-next { width:40px; flex-shrink:0; padding:0; border:0; background:transparent; font-size:18px; color:var(--muted); cursor:pointer; }
+.love-page .love-track:is(:hover,:focus-within,.is-current) { background:rgba(201,133,125,.09); }
+.love-page .love-track:is(:hover,:focus-within,.is-current) .love-play-icon { opacity:.85; }
+.love-page .love-track.is-current .love-number,.love-page .love-next:hover { color:var(--red); }
+.love-page .love-colophon { display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; margin-top:28px; font-size:10px; letter-spacing:.12em; color:var(--muted); }
+.love-page .love-colophon span:first-child { font-family:KaiTi,STKaiti,serif; color:var(--red); font-size:16px; transform:rotate(-2deg); }
+.love-page .album-detail { max-width:680px; padding-top:20px; }
+.love-page .detail-title { font-size:13px; font-weight:400; letter-spacing:.14em; color:var(--red); }
+.love-page .intro-text { font-size:14px; line-height:2.2; color:rgba(24,21,17,.75); margin-bottom:24px; }
+.love-page .intro-quote { color:var(--red); font-family:KaiTi,STKaiti,serif; font-size:22px; font-style:normal; }
+.love-page :is(.status,.empty-tip) { color:var(--muted); }
+.love-page button:focus-visible,#app:has(> .love-page) :is(a,select):focus-visible { outline:1px solid #a9514c; outline-offset:4px; }
+@media(hover:none) { .love-page .love-play-icon { opacity:.5; } }
+@media(max-width:1000px) {
+.love-page .detail-container { padding:128px 32px 132px; }
+.love-page .album-header { grid-template-columns:260px minmax(0,1fr) auto; gap:28px; margin-bottom:48px; }
+.love-page .album-cover { width:260px; height:260px; }
+}
+@media(max-width:700px) {
+.love-page .album-header { grid-template-columns:minmax(0,1fr) auto; gap:32px 16px; }
+.love-page .album-cover-wrapper { grid-column:1 / -1; }
+#app:has(> .love-page) .navbar { padding:0 20px; }
+}
+@media(max-width:520px) {
+.love-page .detail-container { padding:116px 24px 132px; }
+.love-page .album-header { margin-bottom:36px; }
+.love-page .album-cover { width:min(74vw,300px); height:min(74vw,300px); }
+.love-page .love-title { font-size:36px; }
+.love-page .love-eyebrow { font-size:9px; margin-bottom:18px; }
+.love-page .love-track-main { min-height:62px; grid-template-columns:28px minmax(0,1fr) 16px 36px; gap:6px; }
+.love-page .love-number { padding-left:6px; }
+.love-page .love-song-name { font-size:14px; }
+.love-page .love-next { width:28px; }
+}
+@media(prefers-reduced-motion:reduce) { .love-page * { transition:none !important; } }
+#app:has(> .love-page) .navbar { display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 max(40px, calc((100% - 1160px) / 2)); border-bottom: 1px solid rgba(24,21,17,.07); }
+#app:has(> .love-page) .brand { margin-left: 0; }
+#app:has(> .love-page) .brand-logo { height: 46px; opacity: .85; filter: brightness(0); transition: opacity 200ms; }
+#app:has(> .love-page) .nav-links { display: flex; align-items: center; gap: 28px; margin: 0 28px 0 auto; padding: 0; }
+#app:has(> .love-page) :is(.brand,.nav-links,.language-selector) { position: static; top: auto; bottom: auto; transform: none; margin-top: 0; margin-bottom: 0; }
+#app:has(> .love-page) .language-selector { display: flex; align-items: center; margin: 0; padding: 0; }
+#app:has(> .love-page) :is(.nav-links a,.language-selector select) { display: block; position: static; top: auto; bottom: auto; transform: none; box-sizing: border-box; height: 32px; line-height: 32px; margin: 0; padding: 0; border: 0; border-radius: 0; font-family: Arial, 'Microsoft YaHei', sans-serif; font-size: 15px; font-weight: 400; font-style: normal; letter-spacing: .12em; vertical-align: middle; }
+#app:has(> .love-page) .nav-links a { color: rgba(24,21,17,.7); transition: color 200ms; }
+#app:has(> .love-page) .nav-links a:hover { color: #181511; }
+#app:has(> .love-page) .language-selector select { color: rgba(24,21,17,.6); appearance: none; -webkit-appearance: none; }
+#app:has(> .love-page) .language-selector option { background: #e3dac7; color: #181511; }
+
+@media(max-width:700px) { #app:has(> .love-page) .navbar { padding:0 20px; } }
+@media(max-width:520px) {
+#app:has(> .love-page) .nav-links { gap:10px; margin-right:10px; }
+#app:has(> .love-page) :is(.nav-links a,.language-selector select) { font-size:12px; letter-spacing:0; }
+#app:has(> .love-page) .brand-logo { height:38px; }
+}
+@media(max-width:380px) {
+#app:has(> .love-page) .navbar { padding-inline:12px; }
+#app:has(> .love-page) .nav-links { gap:8px; margin-right:8px; }
+#app:has(> .love-page) :is(.nav-links a,.language-selector select) { font-size:11px; }
+#app:has(> .love-page) .brand-logo { height:34px; }
+}
+
