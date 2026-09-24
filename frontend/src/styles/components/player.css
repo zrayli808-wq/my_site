@@ -226,7 +226,7 @@
 }
 /* Shared album player: Winter Misses Spring is the layout reference.
    Themes only set colors; geometry and responsive rules stay shared. */
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .player-bar {
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .player-bar {
   --player-bg: rgba(18,23,29,.84);
   --player-text: #f2f2ef;
   --player-muted: rgba(255,255,255,.4);
@@ -236,29 +236,29 @@
   --player-hover: rgba(199,208,218,.06);
   --player-track: rgba(199,208,218,.22);
 }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .player-bar { height: 62px; background: var(--player-bg); box-shadow: none; border-top-color: var(--player-border); padding: 0 32px; color: var(--player-text); backdrop-filter: blur(16px); }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .player-left { flex-basis: 200px; gap: 10px; min-width: 0; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .cover-mini { width: 34px; height: 34px; border-radius: 1px; box-shadow: none; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .song-info .title { color: var(--player-text); font-size: 12px; font-weight: 400; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .song-info .artist { font-size: 10px; color: var(--player-muted); }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .player-center { gap: 8px; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .ctrl-btn, #app:has(> :is(.winter-page, .love-page, .summer-page)) .playlist-btn { color: var(--player-accent); border-radius: 2px; transition: opacity 200ms, color 200ms, background-color 200ms; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .ctrl-btn { min-width: 32px; min-height: 32px; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .play-btn { width: 32px; height: 32px; background: transparent; box-shadow: none; color: var(--player-play-color); }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .ctrl-btn:hover { background: var(--player-hover); }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .ctrl-btn:active, #app:has(> :is(.winter-page, .love-page, .summer-page)) .play-btn:hover { transform: none; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .ctrl-btn svg { width: 18px; height: 18px; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) .time { font-size: 10px; min-width: 28px; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) :is(.progress-bar,.volume-bar) { height: 2px; background: var(--player-track); accent-color: var(--player-accent); }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) input[type=range]::-webkit-slider-thumb { width: 8px; height: 8px; background: var(--player-accent); box-shadow: none; transform: none; transition: opacity 200ms; }
-#app:has(> :is(.winter-page, .love-page, .summer-page)) input[type=range]::-moz-range-thumb { width: 8px; height: 8px; background: var(--player-accent); box-shadow: none; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .player-bar { height: 62px; background: var(--player-bg); box-shadow: none; border-top-color: var(--player-border); padding: 0 32px; color: var(--player-text); backdrop-filter: blur(16px); }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .player-left { flex-basis: 200px; gap: 10px; min-width: 0; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .cover-mini { width: 34px; height: 34px; border-radius: 1px; box-shadow: none; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .song-info .title { color: var(--player-text); font-size: 12px; font-weight: 400; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .song-info .artist { font-size: 10px; color: var(--player-muted); }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .player-center { gap: 8px; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .ctrl-btn, #app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .playlist-btn { color: var(--player-accent); border-radius: 2px; transition: opacity 200ms, color 200ms, background-color 200ms; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .ctrl-btn { min-width: 32px; min-height: 32px; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .play-btn { width: 32px; height: 32px; background: transparent; box-shadow: none; color: var(--player-play-color); }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .ctrl-btn:hover { background: var(--player-hover); }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .ctrl-btn:active, #app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .play-btn:hover { transform: none; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .ctrl-btn svg { width: 18px; height: 18px; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .time { font-size: 10px; min-width: 28px; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) :is(.progress-bar,.volume-bar) { height: 2px; background: var(--player-track); accent-color: var(--player-accent); }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) input[type=range]::-webkit-slider-thumb { width: 8px; height: 8px; background: var(--player-accent); box-shadow: none; transform: none; transition: opacity 200ms; }
+#app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) input[type=range]::-moz-range-thumb { width: 8px; height: 8px; background: var(--player-accent); box-shadow: none; }
 
 @media (max-width: 700px) {
-  #app:has(> :is(.winter-page, .love-page, .summer-page)) .player-bar { height: auto; min-height: 92px; padding: 8px 16px; gap: 4px; }
-  #app:has(> :is(.winter-page, .love-page, .summer-page)) .player-left { flex: 1; }
-  #app:has(> :is(.winter-page, .love-page, .summer-page)) .player-right { flex: 0 0 108px; }
-  #app:has(> :is(.winter-page, .love-page, .summer-page)) .player-center { max-width: none; }
+  #app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .player-bar { height: auto; min-height: 92px; padding: 8px 16px; gap: 4px; }
+  #app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .player-left { flex: 1; }
+  #app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .player-right { flex: 0 0 108px; }
+  #app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .player-center { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  #app:has(> :is(.winter-page, .love-page, .summer-page)) .player-bar * { animation: none !important; transition: none !important; }
+  #app:has(> :is(.winter-page, .love-page, .summer-page, .twenty-page)) .player-bar * { animation: none !important; transition: none !important; }
 }

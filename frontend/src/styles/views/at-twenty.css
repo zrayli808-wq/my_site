@@ -1,0 +1,130 @@
+/* Album 04: blue sky, warm paper and an open chapter. */
+.twenty-page {
+  --twenty-ink: #163b59;
+  --twenty-muted: #527085;
+  --twenty-accent: #096cb8;
+  background: #edf2ef;
+  color: var(--twenty-ink);
+  text-align: left;
+  font-family: 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+}
+html:has(.twenty-page), body:has(.twenty-page) { background: #edf2ef; }
+#app:has(> .twenty-page) { background: transparent; padding-bottom: 0; }
+.twenty-page .bg-fallback { opacity: .16; filter: saturate(.8); background-repeat: no-repeat; }
+.twenty-page .twenty-veil { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(120deg, rgba(246,243,232,.72), rgba(234,243,245,.2) 72%); }
+.twenty-page .detail-container { max-width: 1240px; padding: 152px 40px 150px; }
+.twenty-page .album-header { display: grid; grid-template-columns: 340px minmax(0,1fr) auto; align-items: end; gap: 56px; margin-bottom: 42px; }
+.twenty-page .album-cover { width: 340px; height: 340px; display: block; border: 6px solid #faf8f0; border-radius: 2px; box-shadow: 0 12px 32px rgba(22,59,89,.1); transition: transform 200ms; }
+.twenty-page .album-cover:hover { transform: translateY(-3px); }
+.twenty-page .album-title-wrapper { display: contents; }
+.twenty-page .title-group { position: relative; align-items: flex-start; gap: 0; text-align: left; min-width: 0; padding-top: 32px; }
+.twenty-page .twenty-eyebrow { margin: 0 0 34px; font-size: 10px; letter-spacing: .16em; color: var(--twenty-accent); }
+.twenty-page .twenty-title { position: relative; z-index: 1; font-size: clamp(48px,5.2vw,74px); font-weight: 600; line-height: 1.15; letter-spacing: -.045em; color: var(--twenty-ink); }
+.twenty-page .twenty-subtitle { position: relative; z-index: 1; margin: 16px 0 36px; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-style: italic; color: var(--twenty-accent); }
+.twenty-page .twenty-number { position: absolute; right: 0; top: -35px; color: rgba(9,108,184,.12); font-family: Georgia, 'Times New Roman', serif; font-size: 180px; line-height: 1; letter-spacing: -.09em; pointer-events: none; }
+.twenty-page .album-meta { gap: 12px; font-size: 13px; letter-spacing: .06em; }
+.twenty-page :is(.meta-item,.meta-divider) { color: var(--twenty-muted); }
+.twenty-page .back-btn { align-self: end; padding: 0; line-height: 26px; font-size: 14px; border-radius: 0; color: var(--twenty-muted); }
+.twenty-page .back-btn:hover { color: var(--twenty-accent); background: transparent; }
+.twenty-page .twenty-lede { display: grid; grid-template-columns: 340px minmax(0,1fr); gap: 56px; padding: 24px 0 30px; border-top: 1px solid rgba(22,59,89,.16); margin-bottom: 28px; }
+.twenty-page .twenty-lede-label { font-size: 10px; letter-spacing: .18em; color: var(--twenty-muted); }
+.twenty-page .twenty-lede p { font-size: 16px; line-height: 1.9; color: var(--twenty-ink); }
+.twenty-page .tab-bar { gap: 32px; margin-bottom: 24px; border-bottom-color: rgba(22,59,89,.18); }
+.twenty-page .tab-btn { padding: 14px 0; color: var(--twenty-muted); font-size: 14px; font-weight: 400; letter-spacing: .1em; }
+.twenty-page .tab-btn.active { color: var(--twenty-accent); font-weight: 600; border-bottom-color: var(--twenty-accent); }
+.twenty-page .tab-btn:hover { color: var(--twenty-ink); }
+.twenty-page :is(.song-list,.album-detail) { background: rgba(249,249,241,.5); border-radius: 2px; box-shadow: none; padding: 32px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(22,59,89,.12); }
+.twenty-page .song-list:has(.empty-tip) { background: transparent; border: 0; padding: 12px 0 0; backdrop-filter: none; }
+.twenty-page .empty-tip { display: grid; grid-template-columns: 340px minmax(0,1fr); gap: 56px; text-align: left; padding: 24px 0; color: var(--twenty-ink); }
+.twenty-page .twenty-empty-label { font-family: Georgia, serif; font-style: italic; color: var(--twenty-accent); font-size: 22px; }
+.twenty-page .twenty-empty-title { display: block; font-size: 20px; font-weight: 500; margin-bottom: 12px; }
+.twenty-page .twenty-empty-copy { font-size: 13px; line-height: 1.9; color: var(--twenty-muted); max-width: 380px; }
+.twenty-page .twenty-read-story { margin-top: 22px; padding: 0 0 5px; border: 0; border-bottom: 1px solid rgba(9,108,184,.4); border-radius: 0; background: transparent; color: var(--twenty-accent); font: inherit; font-size: 13px; cursor: pointer; transition: border-color 200ms; }
+.twenty-page .twenty-read-story:hover { border-color: var(--twenty-accent); }
+.twenty-page .detail-header { margin-bottom: 28px; }
+.twenty-page .detail-title { color: var(--twenty-accent); font-size: 12px; letter-spacing: .16em; font-weight: 500; }
+.twenty-page .detail-content { max-width: 760px; margin-inline: auto; }
+.twenty-page .intro-quote { color: var(--twenty-ink); font-family: Georgia,'Songti SC',SimSun,serif; font-size: clamp(22px,2.2vw,28px); line-height: 1.7; margin-bottom: 28px; letter-spacing: .02em; }
+.twenty-page .intro-text { color: var(--twenty-ink); font-size: 15px; line-height: 2.15; margin-bottom: 24px; }
+.twenty-page .intro-text:last-child { margin-top: 32px; font-size: 13px; color: var(--twenty-muted); }
+.twenty-page .status { color: var(--twenty-muted); }
+.twenty-page .status.error { color: #974a32; }
+/* Reuse the existing track controls when audio is added to this album. */
+.twenty-page .love-list-caption { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 18px; color: var(--twenty-muted); font-size: 10px; letter-spacing: .12em; }
+.twenty-page .love-track { display: flex; border-top: 1px solid rgba(22,59,89,.1); transition: background 200ms; }
+.twenty-page .love-track-main { display: grid; grid-template-columns: 40px minmax(0,1fr) 20px 48px; gap: 12px; align-items: center; flex: 1; min-width: 0; min-height: 62px; padding: 0 8px; border: 0; background: transparent; color: var(--twenty-ink); font: inherit; text-align: left; cursor: pointer; }
+.twenty-page .love-number, .twenty-page .love-duration { font-size: 11px; color: var(--twenty-muted); font-variant-numeric: tabular-nums; }
+.twenty-page .love-duration { text-align: right; }
+.twenty-page .love-song-name { font-size: 15px; line-height: 1.6; padding-block: 14px; overflow-wrap: anywhere; }
+.twenty-page .love-play-icon { opacity: 0; color: var(--twenty-accent); transition: opacity 200ms; }
+.twenty-page .love-next { flex: 0 0 32px; border: 0; background: transparent; color: var(--twenty-muted); cursor: pointer; font-size: 18px; }
+.twenty-page .love-track:is(:hover,:focus-within,.is-current) { background: rgba(9,108,184,.055); }
+.twenty-page .love-track:is(:hover,:focus-within,.is-current) .love-play-icon { opacity: 1; }
+.twenty-page .love-track.is-current :is(.love-number,.love-song-name), .twenty-page .love-next:hover { color: var(--twenty-accent); }
+.twenty-page .twenty-colophon { margin-top: 22px; font-size: 10px; letter-spacing: .16em; color: var(--twenty-muted); }
+.twenty-page button:focus-visible, #app:has(> .twenty-page) :is(.navbar a,.navbar select,.player-bar button,.player-bar input):focus-visible { outline: 2px solid #096cb8; outline-offset: 4px; }
+/* Existing navigation and shared player, with an album-local color theme. */
+#app:has(> .twenty-page) .navbar { height: 80px; padding: 0 max(40px, calc((100% - 1160px) / 2)); border-bottom: 1px solid rgba(22,59,89,.12); }
+#app:has(> .twenty-page) .brand { margin-left: 0; }
+#app:has(> .twenty-page) .brand-logo { height: 46px; filter: brightness(0); opacity: .75; }
+#app:has(> .twenty-page) .nav-links { gap: 28px; margin: 0 28px 0 auto; }
+#app:has(> .twenty-page) :is(.nav-links a,.language-selector select) { font-family: Arial,'Microsoft YaHei',sans-serif; font-size: 15px; font-weight: 400; letter-spacing: .12em; color: #163b59; }
+#app:has(> .twenty-page) .nav-links a:hover { color: #096cb8; }
+#app:has(> .twenty-page) .language-selector option { background: #edf2ef; color: #163b59; }
+#app:has(> .twenty-page) .player-bar {
+  --player-bg: rgba(237,242,239,.84); --player-text: #163b59; --player-muted: #527085;
+  --player-accent: #096cb8; --player-play-color: #096cb8; --player-border: rgba(22,59,89,.12);
+  --player-hover: rgba(9,108,184,.06); --player-track: rgba(22,59,89,.18);
+}
+#app:has(> .twenty-page) .player-bar .time { color: var(--player-muted); }
+#app:has(> .twenty-page) .player-bar .progress-bar { background: linear-gradient(to right, var(--player-accent) 0 var(--player-progress,0%), var(--player-track) var(--player-progress,0%) 100%); }
+#app:has(> .twenty-page) .player-bar .playlist-btn:hover { color: var(--player-text); background: var(--player-hover); }
+@media (max-width: 1000px) {
+  .twenty-page .detail-container { padding: 128px 32px 150px; }
+  .twenty-page .album-header { grid-template-columns: 260px minmax(0,1fr) auto; gap: 28px; }
+  .twenty-page .album-cover { width: 260px; height: 260px; }
+  .twenty-page .twenty-lede, .twenty-page .empty-tip { grid-template-columns: 260px minmax(0,1fr); gap: 28px; }
+  .twenty-page .twenty-number { font-size: 140px; top: -20px; }
+  .twenty-page .twenty-title { font-size: 48px; }
+  .twenty-page .twenty-eyebrow { font-size: 9px; margin-bottom: 24px; }
+}
+@media (max-width: 700px) {
+  .twenty-page .detail-container { padding: 116px 24px 160px; }
+  .twenty-page .album-header { grid-template-columns: minmax(0,1fr) auto; gap: 32px 16px; margin-bottom: 32px; text-align: left; }
+  .twenty-page .album-cover-wrapper { grid-column: 1 / -1; }
+  .twenty-page .album-cover { width: min(74vw,300px); height: min(74vw,300px); }
+  .twenty-page .title-group { padding-top: 0; }
+  .twenty-page .twenty-title { font-size: clamp(38px,8vw,54px); }
+  .twenty-page .twenty-number { font-size: 120px; right: 0; top: 0; }
+  .twenty-page .twenty-subtitle { font-size: 22px; margin: 12px 0 24px; }
+  .twenty-page .album-meta { font-size: 12px; gap: 8px; }
+  .twenty-page .twenty-lede, .twenty-page .empty-tip { grid-template-columns: minmax(0,1fr); gap: 16px; }
+  .twenty-page .twenty-lede { margin-bottom: 12px; padding-block: 22px; }
+  .twenty-page .twenty-lede p { font-size: 14px; }
+  .twenty-page .empty-tip { padding-top: 10px; }
+  .twenty-page .twenty-empty-label { font-size: 18px; }
+  .twenty-page .twenty-empty-title { font-size: 18px; }
+  .twenty-page :is(.album-detail,.song-list:not(:has(.empty-tip))) { padding: 24px 18px; }
+  .twenty-page .intro-text { font-size: 14px; }
+  .twenty-page .love-track-main { grid-template-columns: 22px minmax(0,1fr) 14px 36px; gap: 7px; padding-inline: 4px; }
+  .twenty-page .love-song-name { font-size: 13px; }
+  .twenty-page .love-next { flex-basis: 24px; }
+  #app:has(> .twenty-page) .navbar { padding-inline: 20px; }
+  #app:has(> .twenty-page) .player-bar .progress-bar { min-width: 0; width: 0; }
+}
+@media (max-width: 520px) {
+  #app:has(> .twenty-page) .nav-links { gap: 10px; margin-right: 10px; }
+  #app:has(> .twenty-page) :is(.nav-links a,.language-selector select) { font-size: 12px; letter-spacing: 0; padding-inline: 0; }
+  #app:has(> .twenty-page) .brand-logo { height: 38px; }
+}
+@media (max-width: 380px) {
+  .twenty-page .detail-container { padding-inline: 18px; }
+  .twenty-page .twenty-eyebrow { letter-spacing: .08em; }
+  .twenty-page .twenty-title { font-size: 34px; }
+  #app:has(> .twenty-page) .navbar { padding-inline: 12px; }
+  #app:has(> .twenty-page) .nav-links { gap: 8px; margin-right: 8px; }
+  #app:has(> .twenty-page) :is(.nav-links a,.language-selector select) { font-size: 11px; }
+  #app:has(> .twenty-page) .brand-logo { height: 34px; }
+}
+@media (hover: none) { .twenty-page .love-play-icon { opacity: .65; } }
+@media (prefers-reduced-motion: reduce) { .twenty-page * { transition: none !important; } }

@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper" :class="{ 'winter-page': album?.id === 2, 'love-page': album?.id === 1, 'summer-page': album?.id === 3 }">
+  <div class="page-wrapper" :class="{ 'winter-page': album?.id === 2, 'love-page': album?.id === 1, 'summer-page': album?.id === 3, 'twenty-page': album?.id === 4 }">
     <!-- ===== 冬念春：雨特效背景 ===== -->
     <RainEffect 
       v-if="album?.id === 2"
@@ -24,6 +24,8 @@
     <div v-if="album?.id === 2" class="mask-layer"></div>
 
     <div v-if="album?.id === 3" class="summer-veil" aria-hidden="true"></div>
+
+    <div v-if="album?.id === 4" class="twenty-veil" aria-hidden="true"></div>
 
     <!-- ===== 内容 ===== -->
     <div class="detail-container">
@@ -59,6 +61,12 @@
               <p class="summer-subtitle" lang="en">Summer To Autumn</p>
               <span class="summer-coordinates" aria-hidden="true">0734<span>↓</span>0931</span>
             </template>
+            <template v-else-if="album?.id === 4">
+              <p class="twenty-eyebrow">ZRAY / NOTES ON GROWING UP</p>
+              <span class="twenty-number" aria-hidden="true">20</span>
+              <h1 class="album-title twenty-title">弱冠之年</h1>
+              <p class="twenty-subtitle" lang="en">At Twenty</p>
+            </template>
             <h1 v-else class="album-title">{{ album?.title || '加载中...' }}</h1>
             <div v-if="album?.id !== 2" class="album-meta">
               <span class="meta-item">{{ album?.artist || '未知艺术家' }}</span>
@@ -68,6 +76,11 @@
           </div>
           <button class="back-btn" @click="$router.back()">← 返回</button>
         </div>
+      </div>
+
+      <div v-if="album?.id === 4" class="twenty-lede">
+        <span class="twenty-lede-label">一个新的开始 · A NEW CHAPTER</span>
+        <p>少一些踟蹰，多一些能量、喜悦与希望。</p>
       </div>
 
       <div class="tab-bar">
@@ -91,8 +104,8 @@
         <div v-if="activeTab === 'songs'" class="song-list">
           <div v-if="loading" class="status">加载歌曲中...</div>
           <div v-else-if="error" class="status error">{{ error }}</div>
-          <div v-else-if="songs.length === 0" class="empty-tip"><template v-if="album?.id === 3"><strong>歌曲正在路上</strong><span class="summer-empty-note">summer is still loading...</span></template><template v-else>暂无歌曲，请先添加数据</template></div>
-          <div v-else-if="album?.id === 1 || album?.id === 3" class="love-tracks">
+          <div v-else-if="songs.length === 0" class="empty-tip"><template v-if="album?.id === 3"><strong>歌曲正在路上</strong><span class="summer-empty-note">summer is still loading...</span></template><template v-else-if="album?.id === 4"><span class="twenty-empty-label">The music.</span><div><strong class="twenty-empty-title">歌曲待上架</strong><p class="twenty-empty-copy">这张专辑的音频尚未上线，可以先读读它的创作故事。</p><button type="button" class="twenty-read-story" @click="activeTab = 'detail'">阅读专辑手记 ↗</button></div></template><template v-else>暂无歌曲，请先添加数据</template></div>
+          <div v-else-if="album?.id === 1 || album?.id === 3 || album?.id === 4" class="love-tracks">
             <p class="love-list-caption"><span>{{ album?.id === 3 ? 'SIDE A / 夏 → SIDE B / 秋' : 'CONTENTS / 曲目' }}</span><span>{{ String(songs.length).padStart(2, '0') }} TRACKS</span></p>
             <div v-for="(song, index) in songs" :key="song.id" class="love-track"
               :class="{ 'is-current': playerStore.currentSong?.id === song.id && playerStore.currentAlbum?.id === album?.id }">
@@ -107,6 +120,7 @@
               <button type="button" class="love-next" :aria-label="`下一首播放 ${song.title}`" title="下一首播放" @click="playNext(song)">＋</button>
             </div>
             <p v-if="album?.id === 1" class="love-colophon"><span>以情感温暖世界。</span><span>LOVE &amp; LOYALTY — ZRAY</span></p>
+            <p v-else-if="album?.id === 4" class="twenty-colophon">ZRAY — AT TWENTY</p>
             <p v-else class="summer-colophon"><span>SUMMER TO AUTUMN</span><span>0734 → 0931 — ZRAY, 2023</span></p>
           </div>
           <div v-else-if="album?.id === 2" class="winter-tracks">
@@ -213,8 +227,8 @@
                 <p class="intro-text" style="text-align: right; color: rgba(255,255,255,0.5); margin-top: 8px;">最后祝 ZRay 19岁生日快乐！继续努力吧</p>
               </template>
 
-              <!-- 专辑5：弱冠之年 -->
-              <template v-else-if="album.id === 5">
+              <!-- 专辑4：弱冠之年 -->
+              <template v-else-if="album.id === 4">
                 <p class="intro-quote">“二十岁究竟意味着什么？”</p>
                 <p class="intro-text">
                   自十六岁起，我在每一个生日都会为自己写一首歌。它既是对过去一年的总结，也是对新一年的期许。五年来，这个最初只是灵光一闪的想法，逐渐变成了生日里和蛋糕一样不可或缺的仪式。
@@ -234,12 +248,12 @@
                 <p class="intro-text">
                   这是我耗时两年多近三年的第一张长专辑，也很有可能是我的最后一张，我想未来我也不一定还会有这么多时间和精力去投入在这件事上了，确实很累……
                 </p>
-                <p class="intro-text" style="font-weight: 500; color: rgba(255,255,255,0.7);">但谁知道呢？</p>
+                <p class="intro-text">但谁知道呢？</p>
                 <p class="intro-text">
                   感谢参与这张专辑的每一位编曲人，有了你们优秀的编曲才给予了我每一首歌曲得以栖息的空间。<br>
                   专辑仍多有瑕疵，对此深表歉意。
                 </p>
-                <p class="intro-text" style="text-align: right; color: rgba(255,255,255,0.5); margin-top: 8px;">二零二五年 九月<br>ZRay子睿</p>
+                <p class="intro-text">二零二五年 九月<br>ZRay子睿</p>
               </template>
 
               <!-- 其他专辑 -->
@@ -376,3 +390,5 @@ onMounted(() => {
 <style src="../styles/views/love-loyalty.css"></style>
 
 <style src="../styles/views/summer-autumn.css"></style>
+
+<style src="../styles/views/at-twenty.css"></style>
