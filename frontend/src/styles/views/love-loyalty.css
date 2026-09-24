@@ -90,3 +90,17 @@ html:has(.love-page),body:has(.love-page) { background:#ddd4bf; }
 #app:has(> .love-page) .brand-logo { height:34px; }
 }
 
+
+/* Album theme only: all player geometry comes from components/player.css. */
+#app:has(> .love-page) .player-bar {
+  --player-bg: rgba(221,212,191,.84);
+  --player-text: #181511;
+  --player-muted: rgba(24,21,17,.55);
+  --player-accent: #a9514c;
+  --player-play-color: var(--player-accent);
+  --player-border: rgba(24,21,17,.12);
+  --player-hover: rgba(169,81,76,.06);
+  --player-track: rgba(24,21,17,.22);
+}
+#app:has(> .love-page) .player-bar .time { color: var(--player-muted); }
+#app:has(> .love-page) .player-bar .playlist-btn:hover { background: var(--player-hover); color: var(--player-text); }

@@ -61,22 +61,6 @@ html:has(.winter-page), body:has(.winter-page) { background: #14191e; }
 #app:has(> .winter-page) .nav-links a:hover { color: #f2f2ef; }
 #app:has(> .winter-page) .language-selector select { color: rgba(242,242,239,.6); appearance: none; -webkit-appearance: none; }
 #app:has(> .winter-page) .language-selector option { background: #181e24; color: #f2f2ef; }
-#app:has(> .winter-page) .player-bar { height: 62px; background: rgba(18,23,29,.84); box-shadow: none; border-top-color: rgba(199,208,218,.12); padding: 0 32px; color: #f2f2ef; backdrop-filter: blur(16px); }
-#app:has(> .winter-page) .player-left { flex-basis: 200px; gap: 10px; min-width: 0; }
-#app:has(> .winter-page) .cover-mini { width: 34px; height: 34px; border-radius: 1px; box-shadow: none; }
-#app:has(> .winter-page) .song-info .title { color: #f2f2ef; font-size: 12px; font-weight: 400; }
-#app:has(> .winter-page) .song-info .artist { font-size: 10px; color: rgba(255,255,255,.4); }
-#app:has(> .winter-page) .player-center { gap: 8px; }
-#app:has(> .winter-page) .ctrl-btn, #app:has(> .winter-page) .playlist-btn { color: #c7d0da; border-radius: 2px; transition: opacity 200ms, color 200ms, background-color 200ms; }
-#app:has(> .winter-page) .ctrl-btn { min-width: 32px; min-height: 32px; }
-#app:has(> .winter-page) .play-btn { width: 32px; height: 32px; background: transparent; box-shadow: none; color: #f2f2ef; }
-#app:has(> .winter-page) .ctrl-btn:hover { background: rgba(199,208,218,.06); }
-#app:has(> .winter-page) .ctrl-btn:active, #app:has(> .winter-page) .play-btn:hover { transform: none; }
-#app:has(> .winter-page) .ctrl-btn svg { width: 18px; height: 18px; }
-#app:has(> .winter-page) .time { font-size: 10px; min-width: 28px; }
-#app:has(> .winter-page) :is(.progress-bar,.volume-bar) { height: 2px; background: rgba(199,208,218,.22); accent-color: #c7d0da; }
-#app:has(> .winter-page) input[type=range]::-webkit-slider-thumb { width: 8px; height: 8px; background: #c7d0da; box-shadow: none; transform: none; transition: opacity 200ms; }
-#app:has(> .winter-page) input[type=range]::-moz-range-thumb { width: 8px; height: 8px; background: #c7d0da; box-shadow: none; }
 #app:has(> .winter-page) .playlist-panel { background: rgba(18,23,29,.95); box-shadow: none; animation: winter-panel-in 200ms ease; }
 #app:has(> .winter-page) .playlist-item.active { background: rgba(199,208,218,.07); }
 #app:has(> .winter-page) .playlist-item.active .song-title { color: #f2f2ef; }
@@ -92,10 +76,6 @@ html:has(.winter-page), body:has(.winter-page) { background: #14191e; }
 @media (max-width: 700px) {
   .winter-page .album-header { grid-template-columns: minmax(0,1fr) auto; align-items: end; text-align: left; gap: 32px 16px; }
   .winter-page .album-cover-wrapper { grid-column: 1 / -1; }
-  #app:has(> .winter-page) .player-bar { height: auto; min-height: 92px; padding: 8px 16px; gap: 4px; }
-  #app:has(> .winter-page) .player-left { flex: 1; }
-  #app:has(> .winter-page) .player-right { flex: 0 0 108px; }
-  #app:has(> .winter-page) .player-center { max-width: none; }
   #app:has(> .winter-page) .navbar { padding: 0 20px; }
 }
 @media (max-width: 520px) {
