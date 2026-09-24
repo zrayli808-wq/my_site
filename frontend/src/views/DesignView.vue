@@ -1,7 +1,7 @@
 <template>
   <div
     class="fullscreen-view"
-    @mousedown="startDrag"
+    @pointerdown="startDrag"
     @wheel.prevent="onWheel"
     :class="{ 'is-dragging': isDragging }"
   >
@@ -205,6 +205,8 @@ function maybeLoadMore(position = scrollX.value) {
 // ======================================================
 
 function startDrag(e) {
+  if (!e.isPrimary || e.button !== 0 || e.target.closest("button")) return
+  e.currentTarget.setPointerCapture(e.pointerId)
   isDragging.value = true
 
   startX.value = e.clientX
@@ -364,6 +366,10 @@ function handleResize() {
 // ======================================================
 
 function handleKeydown(e) {
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+    e.preventDefault()
+    onWheel({ deltaX: (e.key === "ArrowRight" ? 1 : -1) * wrapperWidth.value * .85 })
+  }
   if (e.key === 'Escape') {
     closeDetail()
   }
@@ -374,13 +380,14 @@ function handleKeydown(e) {
 // ======================================================
 
 onMounted(() => {
+  document.addEventListener("pointercancel", endDrag)
   document.addEventListener(
-    'mousemove',
+    'pointermove',
     onDrag
   )
 
   document.addEventListener(
-    'mouseup',
+    'pointerup',
     endDrag
   )
 
@@ -401,13 +408,15 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  endDrag()
+  document.removeEventListener("pointercancel", endDrag)
   document.removeEventListener(
-    'mousemove',
+    'pointermove',
     onDrag
   )
 
   document.removeEventListener(
-    'mouseup',
+    'pointerup',
     endDrag
   )
 

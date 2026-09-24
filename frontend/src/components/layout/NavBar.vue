@@ -6,7 +6,7 @@
     <nav class="nav-links">
       <router-link to="/?scroll=design">{{ t('nav.design') }}</router-link>
       <router-link to="/?scroll=music">{{ t('nav.music') }}</router-link>
-      <router-link to="/about">{{ t('nav.about') }}</router-link>
+      <router-link to="/?scroll=career">{{ t('nav.about') }}</router-link>
     </nav>
     <div class="language-selector">
       <select v-model="lang" @change="onLangChange">

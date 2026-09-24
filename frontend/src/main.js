@@ -16,6 +16,7 @@ import './styles/components/album-detail.css'
 import './styles/views/music.css'
 import './styles/views/work.css'
 
+import './styles/responsive.css'
 import App from './App.vue'
 import router from './router'
 import RainEffect from './components/RainEffect.vue'

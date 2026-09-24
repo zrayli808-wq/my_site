@@ -1,0 +1,87 @@
+/* Shared responsive rules; album colors remain theme-owned. */
+html { scroll-padding-top: 112px; }
+#app#app .player-center, #app#app .song-info { min-width: 0; }
+#app#app .player-bar .progress-bar { min-width: 0; width: 0; }
+#app#app .player-bar { padding-bottom: env(safe-area-inset-bottom, 0px); }
+#app#app:has(.player-bar) { padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+#app#app .playlist-panel { padding-top: max(24px, env(safe-area-inset-top)); padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+#app#app .playlist-body { min-height: 0; overscroll-behavior: contain; }
+#app#app .fullscreen-view { height: 100dvh; touch-action: pan-y pinch-zoom; }
+#app#app .gallery-slide img { max-width: calc(100vw - 32px); max-height: calc(100dvh - 120px); }
+#app#app .close-btn { min-width: 44px; min-height: 44px; top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); }
+#app#app .hero-section { height: 100svh; }
+@media (max-width: 1366px) {
+ #app#app .home .design-section .design-block, #app#app .home .music-section .music-block { transform: none; width: 100%; max-width: 720px; margin-inline: auto; }
+ #app#app .home :is(.design-section,.music-section) { padding: 64px 32px; background-size: cover; background-image: url('/showpics/bk2-1.png'); }
+ #app#app .home :is(.design-manifesto,.music-manifesto) { width: 100%; max-width: none; }
+ #app#app .home .career-section { aspect-ratio: auto; min-height: 0; padding: 56px 32px; background-size: cover; }
+ #app#app .home .career-section .career-block { position: relative; inset: auto; transform: none; width: 100%; max-width: 720px; max-height: none; margin: auto; padding: 28px; }
+ #app#app .home .career-manifesto p { font-size: 15px; line-height: 1.9; overflow-wrap: anywhere; }
+ #app#app .home .career-manifesto .section-title { font-size: 17px; }
+}
+@media (max-width: 820px) {
+ #app#app .img-wrap img, #app#app .placeholder-cover { aspect-ratio: 1; height: auto; }
+ #app#app .navbar .nav-links a { min-height: 44px; display: flex; align-items: center; }
+ #app#app .navbar .language-selector select { min-height: 44px; }
+ #app#app .player-bar { height: auto; min-height: 62px; }
+ #app#app .player-bar :is(.ctrl-btn,.playlist-btn) { min-width: 44px; min-height: 44px; flex-shrink: 0; }
+ #app#app .player-bar :is(.progress-bar,.volume-bar) { box-sizing: content-box; border-block: 15px solid transparent; background-clip: content-box; }
+ #app#app .playlist-panel :is(.clear-btn,.remove-btn) { min-width: 44px; min-height: 44px; }
+}
+@media (max-width: 700px) {
+ #app#app .player-bar { padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)); gap: 4px; min-height: 106px; }
+ #app#app .player-bar .player-left { flex: 1; min-width: 0; }
+ #app#app .player-bar .player-right { flex: 0 0 auto; gap: 6px; }
+ #app#app .player-bar .player-center { flex: 1 1 100%; max-width: none; gap: 2px; }
+ #app#app .player-bar .song-info { overflow: hidden; }
+ #app#app .player-bar .song-info :is(.title,.artist) { max-width: 100%; }
+ #app#app .player-bar .volume-bar { width: 50px; }
+ #app#app .player-bar .time { min-width: 28px; font-size: 10px; }
+ #app#app .player-bar .progress-bar { flex: 1; }
+ #app#app:has(.player-bar) { padding-bottom: calc(122px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-width: 600px) {
+ #app#app .navbar { height: 100px; padding: env(safe-area-inset-top, 0px) max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left)); display: grid; grid-template-columns: 1fr auto; grid-template-rows: 48px 48px; gap: 0; }
+ #app#app .navbar .brand { margin: 0; justify-self: start; }
+ #app#app .navbar .brand-logo { height: 34px; }
+ #app#app .navbar .language-selector { grid-column: 2; grid-row: 1; }
+ #app#app .navbar .language-selector select { font-size: 14px; width: auto; padding-inline: 8px; }
+ #app#app .navbar .nav-links { grid-column: 1 / -1; grid-row: 2; margin: 0; width: 100%; gap: 8px; justify-content: space-between; }
+ #app#app .navbar .nav-links a { font-size: 13px; letter-spacing: 0; padding: 0 4px; min-height: 44px; }
+ #app#app .detail-container, #app#app .shell { padding-top: calc(124px + env(safe-area-inset-top, 0px)); }
+ #app#app .home :is(.design-section,.music-section) { padding: 48px 24px; min-height: 0; }
+ #app#app .home :is(.design-manifesto,.music-manifesto) p { font-size: 15px; line-height: 1.9; text-align: left; }
+ #app#app .home .career-section { padding: 32px 16px; }
+ #app#app .home .career-section .career-block { padding: 24px 20px; }
+ #app#app .home .work-link { min-height: 44px; display: inline-flex; align-items: center; }
+ #app#app .home .hero-title { bottom: 18%; }
+ #app#app .home .footer { padding-inline: 20px; }
+}
+@media (hover: none) {
+ #app#app .album-cover:hover { transform: none; }
+ #app#app .play-overlay { opacity: .7; background: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+ #app#app .reveal-title, #app#app .reveal-text, #app#app .item { opacity: 1; transform: none; filter: none; transition: none; }
+}
+
+/* Larger tablets and touch laptops keep the same generous control targets. */
+@media (pointer: coarse) {
+ #app#app .player-bar :is(.ctrl-btn,.playlist-btn) { min-width: 44px; min-height: 44px; flex-shrink: 0; }
+ #app#app .player-bar :is(.progress-bar,.volume-bar) { box-sizing: content-box; border-block: 15px solid transparent; background-clip: content-box; }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+ #app#app .hero-title { bottom: 16%; }
+ #app#app .hero-title-line:first-child { font-size: 32px; }
+ #app#app .hero-title-line:last-child { font-size: 52px; }
+}
+
+/* Landscape notches and the home indicator must not cover controls. */
+#app#app .player-bar { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+@media (min-width: 701px) {
+ #app#app .player-bar { padding-left: max(32px, env(safe-area-inset-left)); padding-right: max(32px, env(safe-area-inset-right)); }
+ #app#app:has(> :is(.winter-page,.love-page,.summer-page,.twenty-page)) .player-bar { height: calc(62px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-width: 600px) {
+ #app#app .navbar { height: calc(100px + env(safe-area-inset-top, 0px)); }
+}

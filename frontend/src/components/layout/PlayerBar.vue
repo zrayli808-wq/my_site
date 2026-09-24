@@ -47,6 +47,7 @@
       <input
         type="range"
         class="progress-bar"
+        aria-label="播放进度"
         :style="{ '--player-progress': `${player.duration ? Math.min(100, Math.max(0, player.currentTime / player.duration * 100)) : 0}%` }"
         min="0"
         :max="player.duration || 0"
@@ -66,6 +67,7 @@
       <input
         type="range"
         class="volume-bar"
+        aria-label="音量"
         min="0"
         max="1"
         step="0.01"
