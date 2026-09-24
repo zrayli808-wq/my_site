@@ -110,5 +110,69 @@
     "title": "念II",
     "duration": "03:18",
     "fileUrl": "/songs/album2/a2s8.mp3"
+  },
+  {
+    "id": 15,
+    "albumId": 3,
+    "trackNumber": 1,
+    "title": "不想再遇见你(prod by.Lil skittles)",
+    "duration": "02:37",
+    "fileUrl": "/songs/album3/a3s1.mp3"
+  },
+  {
+    "id": 16,
+    "albumId": 3,
+    "trackNumber": 2,
+    "title": "夏的歌（prod by.Rick1y）",
+    "duration": "02:50",
+    "fileUrl": "/songs/album3/a3s2.mp3"
+  },
+  {
+    "id": 17,
+    "albumId": 3,
+    "trackNumber": 3,
+    "title": "Take Off【prod by.YoungMarkin]",
+    "duration": "03:03",
+    "fileUrl": "/songs/album3/a3s3.mp3"
+  },
+  {
+    "id": 18,
+    "albumId": 3,
+    "trackNumber": 4,
+    "title": "19!(My wishes) (prod.byYUSENISHERE)",
+    "duration": "03:05",
+    "fileUrl": "/songs/album3/a3s4.mp3"
+  },
+  {
+    "id": 19,
+    "albumId": 3,
+    "trackNumber": 5,
+    "title": "SOFIA【PROD BY YoungMarkin】",
+    "duration": "02:42",
+    "fileUrl": "/songs/album3/a3s5.mp3"
+  },
+  {
+    "id": 20,
+    "albumId": 3,
+    "trackNumber": 6,
+    "title": "玫瑰（prod by.MEGA）",
+    "duration": "03:24",
+    "fileUrl": "/songs/album3/a3s6.mp3"
+  },
+  {
+    "id": 21,
+    "albumId": 3,
+    "trackNumber": 7,
+    "title": "路Freestyle（prod.by MEGA)",
+    "duration": "03:41",
+    "fileUrl": "/songs/album3/a3s7.mp3"
+  },
+  {
+    "id": 22,
+    "albumId": 3,
+    "trackNumber": 8,
+    "title": "失眠症INSOMNIA DEALER(prod by.beatsbyaura)",
+    "duration": "02:55",
+    "fileUrl": "/songs/album3/a3s8.mp3"
   }
 ]
