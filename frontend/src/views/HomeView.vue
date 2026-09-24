@@ -18,6 +18,7 @@
 
     <!-- ===== 设计作品 ===== -->
     <section class="work-section design-section" ref="designSection">
+      <img class="work-section-image" src="/showpics/bk2.jpg" alt="" loading="lazy" decoding="async" />
       <div class="work-block design-block">
         <h2 class="work-title reveal-title" ref="designTitle">{{ t('home.designTitle') }}</h2>
         <div class="design-manifesto reveal-text">
@@ -30,6 +31,7 @@
 
     <!-- ===== 音乐作品 ===== -->
     <section class="work-section music-section" ref="musicSection">
+      <img class="work-section-image" src="/showpics/bk3.jpg" alt="" loading="lazy" decoding="async" />
       <div class="work-block music-block">
         <h2 class="work-title reveal-title" ref="musicTitle">{{ t('home.musicTitle') }}</h2>
         <div class="music-manifesto reveal-text">

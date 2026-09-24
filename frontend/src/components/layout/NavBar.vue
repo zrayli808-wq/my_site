@@ -9,7 +9,7 @@
       <router-link to="/?scroll=career">{{ t('nav.about') }}</router-link>
     </nav>
     <div class="language-selector">
-      <select v-model="lang" @change="onLangChange">
+      <select v-model="lang">
         <option value="zh">中文</option>
         <option value="en">English</option>
       </select>
@@ -18,20 +18,17 @@
 </template>
 
 <script setup>
-import { ref, inject } from 'vue'
+import { computed, inject } from 'vue'
 
 // ★★★ 注入国际化 ★★★
 const i18n = inject('i18n')
 const { t, setLang, currentLang } = i18n
 
 // 语言选择器绑定
-const lang = ref(currentLang.value)
-
-function onLangChange() {
-  setLang(lang.value)
-  // 刷新页面以更新所有组件的翻译
-  window.location.reload()
-}
+const lang = computed({
+  get: () => currentLang.value,
+  set: (value) => setLang(value)
+})
 </script>
 
 <style scoped>

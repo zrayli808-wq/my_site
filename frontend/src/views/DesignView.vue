@@ -3,7 +3,7 @@
     class="fullscreen-view"
     @pointerdown="startDrag"
     @wheel.prevent="onWheel"
-    :class="{ 'is-dragging': isDragging }"
+    :class="{ 'is-dragging': isDragging, 'is-zoomed': zoom > 1 }"
   >
     <button class="close-btn" @click="closeDetail">
       {{ t('design.close') }}
@@ -32,6 +32,12 @@
       </div>
     </div>
 
+    <div class="gallery-zoom" role="group" :aria-label="currentLang === 'en' ? 'Zoom controls' : '缩放控制'">
+      <button :disabled="zoom <= 1" @click="setZoom(zoom - .25)" :aria-label="currentLang === 'en' ? 'Zoom out' : '缩小'">−</button>
+      <button class="zoom-reset" @click="setZoom(1)" :aria-label="currentLang === 'en' ? 'Reset zoom' : '复位缩放'">{{ Math.round(zoom * 100) }}%</button>
+      <button :disabled="zoom >= 4" @click="setZoom(zoom + .25)" :aria-label="currentLang === 'en' ? 'Zoom in' : '放大'">＋</button>
+      <span>{{ currentLang === 'en' ? 'Drag to explore' : '拖动查看' }}</span>
+    </div>
     <div class="bottom-nav">
       <div class="progress-bar">
         <div
@@ -57,7 +63,7 @@ import { useRouter } from 'vue-router'
 
 // ===== 国际化 =====
 const i18n = inject('i18n')
-const { t } = i18n
+const { t, currentLang } = i18n
 
 const router = useRouter()
 
@@ -128,6 +134,23 @@ const startX = ref(0)
 const startScrollX = ref(0)
 
 const scrollX = ref(0)
+const zoom = ref(1)
+const panY = ref(0)
+let startY = 0
+let startPanY = 0
+function clampPanY(value) {
+  const height = trackRef.value?.querySelector('img')?.offsetHeight || 0
+  const limit = Math.max(0, (height * zoom.value - (window.innerHeight - 140)) / 2)
+  return Math.max(-limit, Math.min(limit, value))
+}
+function setZoom(value) {
+  const next = Math.max(1, Math.min(4, value))
+  const center = wrapperWidth.value / 2
+  const position = (scrollX.value + center) * next / zoom.value - center
+  zoom.value = next
+  scrollX.value = Math.max(0, Math.min(position, maxScroll.value))
+  panY.value = next === 1 ? 0 : clampPanY(panY.value)
+}
 
 const wrapperWidth = ref(0)
 const totalWidth = ref(0)
@@ -139,7 +162,7 @@ const totalWidth = ref(0)
 const maxScroll = computed(() => {
   return Math.max(
     0,
-    totalWidth.value - wrapperWidth.value
+    totalWidth.value * zoom.value - wrapperWidth.value
   )
 })
 
@@ -165,7 +188,8 @@ const progressPercent = computed(() => {
 
 const trackStyle = computed(() => {
   return {
-    transform: `translateX(-${scrollX.value}px)`,
+    transform: `translate(${-scrollX.value}px, ${panY.value}px) scale(${zoom.value})`,
+    transformOrigin: 'left center',
     transition: 'none'
   }
 })
@@ -209,6 +233,8 @@ function startDrag(e) {
   e.currentTarget.setPointerCapture(e.pointerId)
   isDragging.value = true
 
+  startY = e.clientY
+  startPanY = panY.value
   startX.value = e.clientX
   startScrollX.value = scrollX.value
 
@@ -219,6 +245,7 @@ function startDrag(e) {
 function onDrag(e) {
   if (!isDragging.value) return
 
+  if (zoom.value > 1) panY.value = clampPanY(startPanY + e.clientY - startY)
   const diff = startX.value - e.clientX
 
   let newScrollX =
@@ -250,6 +277,11 @@ function endDrag() {
 // ======================================================
 
 function onWheel(e) {
+  if (e.ctrlKey || e.metaKey) { setZoom(zoom.value - e.deltaY * .005); return }
+  if (zoom.value > 1 && e.deltaY && !e.shiftKey) {
+    panY.value = clampPanY(panY.value - e.deltaY)
+    if (!e.deltaX) return
+  }
   const delta = e.deltaY || e.deltaX
 
   let newScrollX =
@@ -358,6 +390,7 @@ async function calculateTotalWidth() {
 // ======================================================
 
 function handleResize() {
+  panY.value = clampPanY(panY.value)
   scheduleCalculateTotalWidth()
 }
 
