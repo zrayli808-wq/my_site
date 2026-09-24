@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper" :class="{ 'winter-page': album?.id === 2, 'love-page': album?.id === 1 }">
+  <div class="page-wrapper" :class="{ 'winter-page': album?.id === 2, 'love-page': album?.id === 1, 'summer-page': album?.id === 3 }">
     <!-- ===== 冬念春：雨特效背景 ===== -->
     <RainEffect 
       v-if="album?.id === 2"
@@ -22,6 +22,8 @@
 
     <!-- ===== 遮罩层（仅冬念春） ===== -->
     <div v-if="album?.id === 2" class="mask-layer"></div>
+
+    <div v-if="album?.id === 3" class="summer-veil" aria-hidden="true"></div>
 
     <!-- ===== 内容 ===== -->
     <div class="detail-container">
@@ -47,6 +49,15 @@
               <p class="love-eyebrow">ZRAY / PERSONAL ARCHIVE / 2022</p>
               <h1 class="album-title love-title" lang="en">Love &amp; Loyalty<span>part.1</span></h1>
               <p class="love-note">惟愿爱与忠诚可以遍布大地</p>
+            </template>
+            <template v-else-if="album?.id === 3">
+              <p class="summer-eyebrow">ZRAY / SUMMER TAPES / 2023</p>
+              <div class="summer-heading">
+                <h1 class="album-title summer-title">夏望秋</h1>
+                <svg class="summer-crown" aria-hidden="true" viewBox="0 0 70 48"><path d="M8 37 3 12 24 23 35 4 44 24 65 11 59 38Z M10 44 57 43" /></svg>
+              </div>
+              <p class="summer-subtitle" lang="en">Summer To Autumn</p>
+              <span class="summer-coordinates" aria-hidden="true">0734<span>↓</span>0931</span>
             </template>
             <h1 v-else class="album-title">{{ album?.title || '加载中...' }}</h1>
             <div v-if="album?.id !== 2" class="album-meta">
@@ -80,13 +91,13 @@
         <div v-if="activeTab === 'songs'" class="song-list">
           <div v-if="loading" class="status">加载歌曲中...</div>
           <div v-else-if="error" class="status error">{{ error }}</div>
-          <div v-else-if="songs.length === 0" class="empty-tip">暂无歌曲，请先添加数据</div>
-          <div v-else-if="album?.id === 1" class="love-tracks">
-            <p class="love-list-caption"><span>CONTENTS / 曲目</span><span>{{ String(songs.length).padStart(2, '0') }} TRACKS</span></p>
+          <div v-else-if="songs.length === 0" class="empty-tip"><template v-if="album?.id === 3"><strong>歌曲正在路上</strong><span class="summer-empty-note">summer is still loading...</span></template><template v-else>暂无歌曲，请先添加数据</template></div>
+          <div v-else-if="album?.id === 1 || album?.id === 3" class="love-tracks">
+            <p class="love-list-caption"><span>{{ album?.id === 3 ? 'SIDE A / 夏 → SIDE B / 秋' : 'CONTENTS / 曲目' }}</span><span>{{ String(songs.length).padStart(2, '0') }} TRACKS</span></p>
             <div v-for="(song, index) in songs" :key="song.id" class="love-track"
-              :class="{ 'is-current': playerStore.currentSong?.id === song.id && playerStore.currentAlbum?.id === 1 }">
+              :class="{ 'is-current': playerStore.currentSong?.id === song.id && playerStore.currentAlbum?.id === album?.id }">
               <button type="button" class="love-track-main" :aria-label="`播放 ${song.title}`"
-                :aria-current="playerStore.currentSong?.id === song.id && playerStore.currentAlbum?.id === 1 ? 'true' : undefined"
+                :aria-current="playerStore.currentSong?.id === song.id && playerStore.currentAlbum?.id === album?.id ? 'true' : undefined"
                 @click="playSong(song)">
                 <span class="love-number">{{ String(index + 1).padStart(2, '0') }}</span>
                 <span class="love-song-name">{{ song.title }}</span>
@@ -95,7 +106,8 @@
               </button>
               <button type="button" class="love-next" :aria-label="`下一首播放 ${song.title}`" title="下一首播放" @click="playNext(song)">＋</button>
             </div>
-            <p class="love-colophon"><span>以情感温暖世界。</span><span>LOVE &amp; LOYALTY — ZRAY</span></p>
+            <p v-if="album?.id === 1" class="love-colophon"><span>以情感温暖世界。</span><span>LOVE &amp; LOYALTY — ZRAY</span></p>
+            <p v-else class="summer-colophon"><span>SUMMER TO AUTUMN</span><span>0734 → 0931 — ZRAY, 2023</span></p>
           </div>
           <div v-else-if="album?.id === 2" class="winter-tracks">
             <p class="winter-list-caption"><span>TRACKLIST</span><span>08 TRACKS</span></p>
@@ -362,3 +374,5 @@ onMounted(() => {
 <style src="../styles/views/winter-editorial.css"></style>
 
 <style src="../styles/views/love-loyalty.css"></style>
+
+<style src="../styles/views/summer-autumn.css"></style>

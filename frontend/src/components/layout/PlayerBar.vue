@@ -47,6 +47,7 @@
       <input
         type="range"
         class="progress-bar"
+        :style="{ '--player-progress': `${player.duration ? Math.min(100, Math.max(0, player.currentTime / player.duration * 100)) : 0}%` }"
         min="0"
         :max="player.duration || 0"
         step="0.1"

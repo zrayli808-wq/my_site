@@ -1,0 +1,143 @@
+/* Album 03 only. Existing imagery, shared page, track controls and player. */
+.summer-page {
+  --summer-green: #a6ff20;
+  --summer-purple: #a22bff;
+  --summer-orange: #ff6a25;
+  --summer-ink: #f5f3ee;
+  color: var(--summer-ink);
+  font-family: 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+}
+html:has(.summer-page), body:has(.summer-page) { background: #151714; }
+#app:has(> .summer-page) { background: transparent; padding-bottom: 0; }
+.summer-page .bg-fallback {
+  transform: scale(1.04);
+  background-repeat: no-repeat;
+  filter: saturate(.87);
+}
+.summer-page .summer-veil {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(110deg, rgba(10,10,10,.43), rgba(10,10,10,.26) 70%, rgba(10,10,10,.18));
+}
+.summer-page .detail-container { max-width: 1240px; padding: 152px 40px 144px; }
+.summer-page .album-header { display: grid; grid-template-columns: 340px minmax(0,1fr) auto; align-items: end; gap: 56px; margin-bottom: 56px; }
+.summer-page .album-cover-wrapper { position: relative; }
+.summer-page .album-cover-wrapper::before {
+  content: ''; position: absolute; z-index: 1; width: 92px; height: 22px; left: 35%; top: -10px;
+  background: rgba(208,209,182,.62); transform: rotate(-8deg); pointer-events: none;
+  clip-path: polygon(3% 0, 98% 5%, 96% 88%, 2% 100%, 5% 53%, 0 30%);
+}
+.summer-page .album-cover { display: block; width: 340px; height: 340px; border: 5px solid #eeece1; border-bottom-width: 13px; border-radius: 1px; box-shadow: 0 8px 24px #0005; transition: transform 200ms; }
+.summer-page .album-cover:hover { transform: rotate(-1deg) scale(1.01); }
+.summer-page .album-title-wrapper { display: contents; }
+.summer-page .title-group { position: relative; gap: 0; align-items: flex-start; text-align: left; min-width: 0; padding-bottom: 10px; }
+.summer-page .summer-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .18em; margin-bottom: 24px; color: var(--summer-green); }
+.summer-page .summer-heading { position: relative; }
+.summer-page .summer-title { font-size: clamp(58px,6vw,88px); font-weight: 800; line-height: 1.08; letter-spacing: -.045em; color: var(--summer-ink); text-shadow: 0 2px 16px #0004; animation: summer-arrive 400ms ease-out both; }
+.summer-page .summer-crown { position: absolute; top: -30px; right: -37px; width: 44px; height: 34px; fill: none; stroke: var(--summer-purple); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; transform: rotate(13deg); }
+.summer-page .summer-subtitle { position: relative; width: fit-content; margin: 16px 0 28px; font-family: 'Segoe Print', 'Comic Sans MS', cursive; font-size: clamp(22px,2.3vw,32px); font-style: italic; line-height: 1.35; color: var(--summer-ink); transform: rotate(-3deg); }
+.summer-page .summer-subtitle::after { content: ''; position: absolute; bottom: -7px; left: -3px; width: 101%; height: 7px; background: var(--summer-green); clip-path: polygon(0 30%, 32% 0, 70% 28%, 100% 5%, 98% 65%, 53% 100%, 2% 79%); opacity: .9; }
+.summer-page .album-meta { gap: 12px; font-size: 13px; letter-spacing: .04em; }
+.summer-page :is(.meta-item,.meta-divider) { color: rgba(245,243,238,.8); }
+.summer-page .summer-coordinates { position: absolute; right: 0; top: -18px; display: flex; flex-direction: column; align-items: center; font-family: 'Segoe Print', 'Comic Sans MS', cursive; font-size: 18px; line-height: 1.3; transform: rotate(9deg); color: var(--summer-green); opacity: .85; }
+.summer-page .summer-coordinates span { font-size: 26px; line-height: 1; }
+.summer-page .back-btn { position: relative; align-self: end; padding: 0 0 10px; color: var(--summer-ink); font-size: 14px; border-radius: 0; }
+.summer-page .back-btn::after { content: ''; position: absolute; left: 0; bottom: 4px; width: 22px; height: 2px; background: var(--summer-green); transform: rotate(-4deg); transition: width 200ms; }
+.summer-page .back-btn:hover { background: transparent; }
+.summer-page .back-btn:hover::after { width: 100%; }
+.summer-page .tab-bar { gap: 34px; border-bottom-color: rgba(245,243,238,.2); margin-bottom: 24px; }
+.summer-page .tab-btn { position: relative; padding: 14px 0; border: 0; margin: 0; color: rgba(245,243,238,.6); font-weight: 500; font-size: 16px; letter-spacing: .1em; }
+.summer-page .tab-btn.active { color: var(--summer-ink); font-weight: 700; }
+.summer-page .tab-btn.active::after { content: ''; position: absolute; left: -3px; right: -5px; bottom: -2px; height: 5px; background: var(--summer-green); transform: rotate(-3deg); clip-path: polygon(0 10%, 60% 0, 100% 20%, 95% 90%, 43% 70%, 2% 100%); }
+.summer-page .tab-btn:hover { color: var(--summer-green); }
+.summer-page :is(.song-list,.album-detail) { position: relative; border-radius: 3px; background: rgba(10,10,10,.48); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: none; padding: 24px 32px 20px; }
+.summer-page .song-list::before { content: ''; position: absolute; width: 68px; height: 8px; right: -12px; top: 3px; background: var(--summer-purple); transform: rotate(22deg); clip-path: polygon(0 40%, 14% 10%, 90% 0, 100% 60%, 65% 90%, 9% 100%); pointer-events: none; }
+.summer-page .song-list::after { content: ''; position: absolute; bottom: 13px; left: -8px; width: 21px; height: 21px; border-left: 3px solid var(--summer-orange); border-bottom: 3px solid var(--summer-orange); transform: rotate(-9deg); pointer-events: none; opacity: .8; }
+.summer-page .love-list-caption { display: flex; justify-content: space-between; gap: 16px; padding: 0 0 16px; color: rgba(245,243,238,.5); font-size: 10px; letter-spacing: .14em; }
+.summer-page .love-track { display: flex; position: relative; align-items: stretch; border-top: 1px solid rgba(255,255,255,.09); transition: background 200ms; }
+.summer-page .love-track-main { display: grid; grid-template-columns: 40px minmax(0,1fr) 20px 48px; align-items: center; gap: 16px; flex: 1; min-width: 0; min-height: 62px; padding: 0 8px; border: 0; background: transparent; color: var(--summer-ink); font: inherit; cursor: pointer; text-align: left; }
+.summer-page .love-number { font-size: 11px; color: rgba(245,243,238,.45); font-variant-numeric: tabular-nums; }
+.summer-page .love-song-name { padding: 15px 0; font-size: 15px; line-height: 1.6; overflow-wrap: anywhere; transition: transform 200ms; }
+.summer-page .love-duration { font-size: 11px; color: rgba(245,243,238,.6); text-align: right; font-variant-numeric: tabular-nums; }
+.summer-page .love-play-icon { color: var(--summer-green); opacity: 0; transition: opacity 200ms; }
+.summer-page .love-next { flex: 0 0 32px; border: 0; padding: 0; background: transparent; color: rgba(245,243,238,.5); font-size: 18px; cursor: pointer; transition: color 200ms; }
+.summer-page .love-track:is(:hover,:focus-within) { background: rgba(255,255,255,.045); }
+.summer-page .love-track:is(:hover,:focus-within) .love-song-name { transform: translateX(4px); }
+.summer-page .love-track:is(:hover,:focus-within,.is-current) .love-play-icon { opacity: 1; }
+.summer-page .love-track.is-current { background: rgba(166,255,32,.065); }
+.summer-page .love-track.is-current::before { content: ''; position: absolute; top: 21px; left: -1px; width: 2px; height: 20px; background: var(--summer-green); }
+.summer-page .love-track.is-current :is(.love-number,.love-song-name), .summer-page .love-next:hover { color: var(--summer-green); }
+.summer-page .summer-colophon { display: flex; justify-content: space-between; gap: 12px; margin-top: 20px; font-size: 9px; letter-spacing: .14em; color: rgba(245,243,238,.45); }
+.summer-page .summer-colophon span:first-child { color: var(--summer-green); }
+.summer-page .album-detail { padding: 32px; }
+.summer-page .detail-title { color: var(--summer-green); font-size: 16px; }
+.summer-page .detail-content { max-width: 760px; }
+.summer-page .intro-text { font-size: 15px; line-height: 2; color: rgba(245,243,238,.85); margin-bottom: 20px; }
+.summer-page .empty-tip { text-align: left; padding: 24px 0; color: var(--summer-ink); }
+.summer-page .summer-empty-note { display: block; margin-top: 12px; color: var(--summer-green); font-size: 13px; font-style: italic; }
+.summer-page button:focus-visible, #app:has(> .summer-page) :is(.navbar a,.navbar select,.player-bar button,.player-bar input):focus-visible { outline: 2px solid #a6ff20; outline-offset: 4px; }
+/* Same existing navbar and dimensions as the other editorial album pages. */
+#app:has(> .summer-page) .navbar { height: 80px; padding: 0 max(40px, calc((100% - 1160px) / 2)); border-bottom: 1px solid rgba(245,243,238,.12); }
+#app:has(> .summer-page) .brand { margin-left: 0; }
+#app:has(> .summer-page) .brand-logo { height: 46px; filter: brightness(0) invert(1); }
+#app:has(> .summer-page) .nav-links { gap: 28px; margin: 0 28px 0 auto; }
+#app:has(> .summer-page) :is(.nav-links a,.language-selector select) { font-family: Arial,'Microsoft YaHei',sans-serif; font-size: 15px; font-weight: 400; letter-spacing: .12em; color: #f5f3ee; }
+#app:has(> .summer-page) .nav-links a:hover { color: #a6ff20; }
+#app:has(> .summer-page) .language-selector option { background: #171916; color: #f5f3ee; }
+/* Shared player geometry is inherited; only the summer material and colors differ. */
+#app:has(> .summer-page) .player-bar {
+  --player-bg: rgba(10,10,10,.65); --player-text: #f5f3ee; --player-muted: rgba(245,243,238,.55);
+  --player-accent: #a6ff20; --player-play-color: #a6ff20; --player-border: rgba(255,255,255,.12);
+  --player-hover: rgba(166,255,32,.08); --player-track: rgba(255,255,255,.2);
+}
+#app:has(> .summer-page) .player-bar .play-btn { border-radius: 50%; background: rgba(10,10,10,.5); box-shadow: inset 0 0 0 1px var(--player-accent); }
+#app:has(> .summer-page) .player-bar .play-btn:hover { background: var(--player-hover); }
+#app:has(> .summer-page) .player-bar .time { color: var(--player-muted); }
+#app:has(> .summer-page) .player-bar .progress-bar { background: linear-gradient(to right, var(--player-accent) 0 var(--player-progress,0%), var(--player-track) var(--player-progress,0%) 100%); }
+#app:has(> .summer-page) .player-bar .playlist-btn:hover { color: var(--player-text); background: var(--player-hover); }
+#app:has(> .summer-page) .player-bar input[type=range]::-webkit-slider-thumb { background: #d1ff99; }
+#app:has(> .summer-page) .player-bar input[type=range]::-moz-range-thumb { background: #d1ff99; }
+@keyframes summer-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1000px) {
+  .summer-page .detail-container { padding: 128px 32px 144px; }
+  .summer-page .album-header { grid-template-columns: 260px minmax(0,1fr) auto; gap: 28px; }
+  .summer-page .album-cover { width: 260px; height: 260px; }
+  .summer-page .summer-coordinates { position: static; flex-direction: row; gap: 10px; order: 5; margin-top: 18px; font-size: 14px; transform: rotate(-3deg); }
+  .summer-page .summer-coordinates span { font-size: 18px; }
+}
+@media (max-width: 700px) {
+  .summer-page .detail-container { padding: 116px 24px 160px; }
+  .summer-page .album-header { grid-template-columns: minmax(0,1fr) auto; gap: 36px 16px; margin-bottom: 32px; text-align: left; }
+  .summer-page .album-cover-wrapper { grid-column: 1 / -1; width: fit-content; }
+  .summer-page .album-cover { width: min(74vw,300px); height: min(74vw,300px); }
+  .summer-page .summer-title { font-size: 58px; }
+  .summer-page .summer-eyebrow { font-size: 9px; margin-bottom: 22px; }
+  .summer-page .summer-subtitle { font-size: 22px; }
+  .summer-page .summer-crown { right: -24px; width: 34px; }
+  .summer-page .album-meta { font-size: 11px; }
+  .summer-page :is(.song-list,.album-detail) { padding: 18px 14px; }
+  .summer-page .love-track-main { grid-template-columns: 22px minmax(0,1fr) 14px 36px; gap: 7px; padding-inline: 4px; }
+  .summer-page .love-song-name { font-size: 13px; }
+  .summer-page .love-next { flex-basis: 24px; }
+  .summer-page .love-list-caption { font-size: 8px; letter-spacing: .07em; }
+  .summer-page .summer-colophon { flex-wrap: wrap; font-size: 8px; }
+  #app:has(> .summer-page) .navbar { padding-inline: 20px; }
+  #app:has(> .summer-page) .player-bar .progress-bar { min-width: 0; width: 0; }
+}
+@media (max-width: 520px) {
+  #app:has(> .summer-page) .nav-links { gap: 10px; margin-right: 10px; }
+  #app:has(> .summer-page) :is(.nav-links a,.language-selector select) { font-size: 12px; letter-spacing: 0; padding-inline: 0; }
+  #app:has(> .summer-page) .brand-logo { height: 38px; }
+}
+@media (max-width: 380px) {
+  .summer-page .detail-container { padding-inline: 18px; }
+  .summer-page .summer-title { font-size: 48px; }
+  .summer-page .summer-subtitle { font-size: 19px; }
+  #app:has(> .summer-page) .navbar { padding-inline: 12px; }
+  #app:has(> .summer-page) .nav-links { gap: 8px; margin-right: 8px; }
+  #app:has(> .summer-page) :is(.nav-links a,.language-selector select) { font-size: 11px; }
+  #app:has(> .summer-page) .brand-logo { height: 34px; }
+}
+@media (hover: none) { .summer-page .love-play-icon { opacity: .7; } }
+@media (prefers-reduced-motion: reduce) {
+  .summer-page *, .summer-page *::before, .summer-page *::after { animation: none !important; transition: none !important; }
+}
